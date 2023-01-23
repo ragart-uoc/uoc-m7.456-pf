@@ -1,10 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
- 
-// NOTE: The movement for this script uses the new InputSystem. The player needs to have a PlayerInput
-// component added and the Behaviour should be set to Send Messages so that the OnMove and OnFire methods
-// actually trigger
+
 namespace PF.Controllers
 {
     public class PlayerController : MonoBehaviour
@@ -72,19 +69,11 @@ namespace PF.Controllers
             if (count == 0)
             {
                 var moveVector = direction * (moveSpeed * Time.fixedDeltaTime);
-
-                // No collisions
                 _rb.MovePosition(_rb.position + moveVector);
                 return true;
             }
             else
             {
-                // Print collisions
-                foreach (RaycastHit2D hit in _castCollisions)
-                {
-                    print(hit.ToString());
-                }
-
                 return false;
             }
         }
