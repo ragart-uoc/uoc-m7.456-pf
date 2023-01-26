@@ -678,6 +678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   companyLogo: {fileID: 54261344}
   companyMotto: {fileID: 1477101457}
+  nextScene: {fileID: 102900000, guid: 5dee4229d832f3047a47e8745503beec, type: 3}
 --- !u!4 &1740938651
 Transform:
   m_ObjectHideFlags: 0

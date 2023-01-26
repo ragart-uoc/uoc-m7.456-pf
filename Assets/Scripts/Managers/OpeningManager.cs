@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 using TMPro;
 
 namespace PF.Managers
@@ -15,6 +16,9 @@ namespace PF.Managers
         
         /// <value>Property <c>companyMotto</c> represents the UI element containing the company motto.</value>
         public TextMeshProUGUI companyMotto;
+        
+        /// <value>Property <c>nextScene</c> represents the scene that will be loaded next.</value>
+        public SceneAsset nextScene;
 
         /// <summary>
         /// Method <c>Start</c> is called on the frame when a script is enabled just before any of the Update methods are called the first time.
@@ -30,7 +34,7 @@ namespace PF.Managers
             companyMotto.CrossFadeAlpha(0.0f, 1.5f, false);
             yield return new WaitForSeconds(1.5f);
 
-            SceneManager.LoadScene("Intro");
+            SceneManager.LoadScene(nextScene.name);
         }
     }
 }
