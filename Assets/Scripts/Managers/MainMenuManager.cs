@@ -93,23 +93,20 @@ namespace PF.Managers
         /// </summary>
         public void StartGame()
         {
-            return;
         }
-        
+
         /// <summary>
         /// Method <c>ContinueGame</c> loads the new game scene with the last saved state.
         /// </summary>
         public void ContinueGame()
         {
-            return;
         }
-        
+
         /// <summary>
         /// Method <c>Options</c> toggles the visibility of the options screen.
         /// </summary>
         public void ToggleOptions()
         {
-            return;
         }
         
         /// <summary>
