@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,12 +5,9 @@ namespace PF.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
-        public float moveSpeed = 1f;
-        public float collisionOffset = 0.05f;
-        public ContactFilter2D movementFilter;
+        public float moveSpeed = 1;
 
         private Vector2 _moveInput;
-        private readonly List<RaycastHit2D> _castCollisions = new List<RaycastHit2D>();
         private Rigidbody2D _rb;
         private Animator _animator;
 
@@ -27,8 +23,6 @@ namespace PF.Controllers
 
         public void FixedUpdate()
         {
-
-            // rb.MovePosition(rb.position + (moveInput * moveSpeed * Time.fixedDeltaTime));
 
             if (_moveInput != Vector2.zero)
             {
@@ -52,30 +46,12 @@ namespace PF.Controllers
 
 
         }
-
-        // Tries to move the player in a direction by casting in that direction by the amount
-        // moved plus an offset. If no collisions are found, it moves the players
-        // Returns true or false depending on if a move was executed
+        
         private bool MovePlayer(Vector2 direction)
         {
-            // Check for potential collisions
-            int count = _rb.Cast(
-                direction, // X and Y values between -1 and 1 that represent the direction from the body to look for collisions
-                movementFilter, // The settings that determine where a collision can occur on such as layers to collide with
-                _castCollisions, // List of collisions to store the found collisions into after the Cast is finished
-                moveSpeed * Time.fixedDeltaTime +
-                collisionOffset); // The amount to cast equal to the movement plus an offset
-
-            if (count == 0)
-            {
-                var moveVector = direction * (moveSpeed * Time.fixedDeltaTime);
-                _rb.MovePosition(_rb.position + moveVector);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            var moveVector = direction * (moveSpeed * Time.fixedDeltaTime);
+            _rb.MovePosition(_rb.position + moveVector);
+            return true;
         }
 
         public void OnMove(InputValue value)

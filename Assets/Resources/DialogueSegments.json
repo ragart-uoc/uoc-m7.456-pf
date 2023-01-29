@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "speaker": "Character",
+        "content": "Yes?",
+        "nextSegment": 2,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 2,
+        "speaker": "Character",
+        "content": "...",
+        "nextSegment": 3,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 3,
+        "speaker": "Character",
+        "content": "What do you mean, she's dead? Suicide!?",
+        "nextSegment": 4,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 4,
+        "speaker": "Character",
+        "content": "No... My friend...\nHow could this happen?",
+        "nextSegment": 5,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 5,
+        "speaker": "Character",
+        "content": "Why didn't I do anything?\nHow could I not realize what she was going through?",
+        "nextSegment": 6,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 6,
+        "speaker": "Character",
+        "content": "What if I didn't want to realize? What if she was desperately asking for help?",
+        "nextSegment": 7,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 7,
+        "speaker": "Character",
+        "content": "What if...?",
+        "nextSegment": null,
+        "bridgeOpen": 1,
+        "ending": null,
+        "affectingWords": []
+    }
+]

@@ -2561,7 +2561,13 @@ MonoBehaviour:
     <#FF220088><allcaps>Music</allcaps></color>
 
     "Dark
-    Fallout", remaxim'
+    Fallout", remaxim
+
+
+    <#FF220088><allcaps>Components and scripts</allcaps></color>
+
+    "Tilemap
+    events", NTWalkers'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9cfd5dd6110dacd4dbc4990365ab3f75, type: 2}
   m_sharedMaterial: {fileID: -3808848578001791464, guid: 9cfd5dd6110dacd4dbc4990365ab3f75, type: 2}
@@ -2592,7 +2598,7 @@ MonoBehaviour:
   m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 36
+  m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2

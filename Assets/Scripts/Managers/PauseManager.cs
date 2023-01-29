@@ -11,6 +11,9 @@ namespace PF.Managers
     /// </summary>
     public class PauseManager : MonoBehaviour
     {
+        /// <value>Property <c>_instance</c> represents the instance of the PauseManager.</value>
+        private static PauseManager _instance;
+        
         /// <value>Property <c>pausePanel</c> represents the UI element containing the pause panel.</value>
         public GameObject pausePanel;
         
@@ -19,9 +22,23 @@ namespace PF.Managers
         
         /// <value>Property <c>_playerController</c> represents the player's controller.</value>
         private PlayerController _playerController;
-
+        
         /// <value>Property <c>_playerInput</c> represents the player's input.</value>
         private PlayerInput _playerInput;
+
+        /// <summary>
+        /// Method <c>Awake</c> is called when the script instance is being loaded.
+        /// </summary>
+        private void Awake()
+        {
+            // Singleton pattern
+            if (_instance != null && _instance != this)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+            _instance = this;
+        }
         
         /// <summary>
         /// Method <c>Start</c> is called on the frame when a script is enabled just before any of the Update methods are called the first time.
@@ -48,11 +65,11 @@ namespace PF.Managers
         /// </summary>
         private void TogglePause()
         {
-            Time.timeScale = pausePanel.activeSelf ? 0f : 1f;
-            AudioListener.pause = pausePanel.activeSelf;
+            Time.timeScale = !pausePanel.activeSelf ? 0f : 1f;
+            AudioListener.pause = !pausePanel.activeSelf;
+            _playerController.enabled = pausePanel.activeSelf;
+            _playerInput.enabled = pausePanel.activeSelf;
             pausePanel.SetActive(!pausePanel.activeSelf);
-            _playerController.enabled = !pausePanel.activeSelf;
-            _playerInput.enabled = !pausePanel.activeSelf;
             // If option panel is active, select the first slider
             if (pausePanel.activeSelf)
             {

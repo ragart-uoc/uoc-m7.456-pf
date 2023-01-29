@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using PF.Entities;
 
@@ -19,9 +17,6 @@ namespace PF.Managers
 
         /// <value>Property <c>_pausePanel</c> represents the game object for the player.</value>
         private GameObject _player;
-        
-        /// <value>Property <c>_playerInput</c> represents the player's input.</value>
-        private PlayerInput _playerInput;
 
         /// <summary>
         /// Method <c>Awake</c> is called when the script instance is being loaded.
@@ -44,7 +39,9 @@ namespace PF.Managers
         private void Start()
         {
             var playerProgressJson = PlayerPrefs.GetString("PlayerProgress");
-            _playerProgress = playerProgressJson == "" ? new PlayerProgress() : _playerProgress.FromJson(playerProgressJson);
+            _playerProgress = playerProgressJson == ""
+                ? new PlayerProgress()
+                : _playerProgress.FromJson(playerProgressJson);
         }
         
         /// <summary>
@@ -72,7 +69,6 @@ namespace PF.Managers
             {
                 case "Game":
                     _player = GameObject.FindWithTag("Player");
-                    _playerInput = _player.GetComponent<PlayerInput>();
                     break;
             }
         }
