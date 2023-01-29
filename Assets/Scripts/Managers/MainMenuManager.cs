@@ -1,17 +1,37 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using PF.Entities;
 
 namespace PF.Managers
 {
+    /// <summary>
+    /// Class <c>MainMenuManager</c> contains the methods and properties needed for the main menu screen.
+    /// </summary>
     public class MainMenuManager : MonoBehaviour
     {
+        /// <value>Property <c>companyLogo</c> represents the UI element containing the game logo text.</value>
         public TextMeshProUGUI logoText;
+        
+        /// <value>Property <c>pressButtonText</c> represents the UI element containing the "press any button" text.</value>
         public TextMeshProUGUI pressButtonText;
+        
+        /// <value>Property <c>mainMenu</c> represents the UI element containing the main menu.</value>
         public GameObject mainMenu;
+        
+        /// <value>Property <c>_mainMenuTexts</c> represents the UI elements containing the main menu texts.</value>
         private TextMeshProUGUI[] _mainMenuTexts;
+        
+        /// <value>Property <c>selectedButton</c> represents the button that is currently selected.</value>
         public Button selectedButton;
+        
+        /// <value>Property <c>optionsPanel</c> represents the UI element containing the options panel.</value>
+        public GameObject optionsPanel;
+        
+        /// <value>Property <c>creditsPanel</c> represents the UI element containing the credits panel.</value>
+        public GameObject creditsPanel;
 
         /// <summary>
         /// Method <c>Awake</c> is called when the script instance is being loaded.
@@ -34,9 +54,9 @@ namespace PF.Managers
         /// </summary>
         private void Update()
         {
-            if (Input.anyKeyDown && !mainMenu.activeSelf)
+            if (Input.anyKeyDown && !mainMenu.activeSelf && logoText.canvasRenderer.GetAlpha() >= 1.0f)
             {
-                StopCoroutine(BlinkPressButtonText());
+                StopCoroutine(BlinkText(pressButtonText));
                 pressButtonText.gameObject.SetActive(false);
                 StartCoroutine(ShowMainMenu());
             }
@@ -53,19 +73,19 @@ namespace PF.Managers
             yield return new WaitForSeconds(1.5f);
             pressButtonText.CrossFadeAlpha(1.0f, 1.5f, false);
             yield return new WaitForSeconds(1.5f);
-            StartCoroutine(BlinkPressButtonText());
+            StartCoroutine(BlinkText(pressButtonText));
         }
 
         /// <summary>
-        /// Method <c>BlinkPressButtonText</c> makes the "press any button" text blink.
+        /// Method <c>BlinkText</c> makes a text blink.
         /// </summary>
-        private IEnumerator BlinkPressButtonText()
+        private static IEnumerator BlinkText(Graphic text)
         {
-            while (true)
+            while (text.gameObject.activeSelf)
             {
-                pressButtonText.CrossFadeAlpha(0.0f, 0.5f, false);
+                text.CrossFadeAlpha(0.0f, 0.5f, false);
                 yield return new WaitForSeconds(0.5f);
-                pressButtonText.CrossFadeAlpha(1.0f, 0.5f, false);
+                text.CrossFadeAlpha(1.0f, 0.5f, false);
                 yield return new WaitForSeconds(0.5f);
             }
         }
@@ -75,8 +95,17 @@ namespace PF.Managers
         /// </summary>
         private IEnumerator ShowMainMenu()
         {
+            var playerProgress = PlayerPrefsManager.LoadPlayerProgress();
+            Debug.Log(playerProgress);
             foreach (var mainMenuText in _mainMenuTexts)
             {
+                // If element name is "ContinueText", check if there is a saved game
+                if (mainMenuText.name == "ContinueText"
+                    && playerProgress == "")
+                {
+                    mainMenuText.gameObject.SetActive(false);
+                    continue;
+                }
                 mainMenuText.canvasRenderer.SetAlpha(0.0f);
             }
             mainMenu.SetActive(true);
@@ -87,28 +116,56 @@ namespace PF.Managers
             }
             selectedButton.Select();
         }
-        
-        /// <summary>
-        /// Method <c>StartGame</c> loads the new game scene.
-        /// </summary>
-        public void StartGame()
-        {
-        }
 
         /// <summary>
-        /// Method <c>ContinueGame</c> loads the new game scene with the last saved state.
+        /// Method <c>ContinueGame</c> loads the game scene.
         /// </summary>
         public void ContinueGame()
         {
+            var playerProgressJson = PlayerPrefsManager.LoadPlayerProgress();
+            if (playerProgressJson == "")
+            {
+                SceneManager.LoadScene("Game");
+            }
+            var playerProgress = new PlayerProgress().FromJson(playerProgressJson);
+            SceneManager.LoadScene(playerProgress.wordsLearned.Count == 0 ? "Game" : "WordSelection");
+        }
+        
+        /// <summary>
+        /// Method <c>NewGame</c> loads the game scene removing any player progress.
+        /// </summary>
+        public void NewGame()
+        {
+            PlayerPrefsManager.SavePlayerProgress("");
+            SceneManager.LoadScene("Game");
         }
 
         /// <summary>
-        /// Method <c>Options</c> toggles the visibility of the options screen.
+        /// Method <c>ToggleOptions</c> toggles the visibility of the options screen.
         /// </summary>
         public void ToggleOptions()
         {
+            optionsPanel.SetActive(!optionsPanel.activeSelf);
+            // If option panel is active, prevent the main menu buttons from being clicked
+            foreach (var mainMenuText in _mainMenuTexts)
+            {
+                mainMenuText.raycastTarget = !optionsPanel.activeSelf;
+            }
         }
         
+        /// <summary>
+        /// Method <c>ToggleCredits</c> toggles the visibility of the credits screen.
+        /// </summary>
+        public void ToggleCredits()
+        {
+            creditsPanel.SetActive(!creditsPanel.activeSelf);
+            // If credits panel is active, prevent the main menu buttons from being clicked
+            foreach (var mainMenuText in _mainMenuTexts)
+            {
+                mainMenuText.raycastTarget = !creditsPanel.activeSelf;
+            }
+        }
+
         /// <summary>
         /// Method <c>QuitGame</c> quits the game.
         /// </summary>
