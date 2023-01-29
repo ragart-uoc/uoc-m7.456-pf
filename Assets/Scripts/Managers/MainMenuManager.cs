@@ -15,8 +15,8 @@ namespace PF.Managers
         /// <value>Property <c>companyLogo</c> represents the UI element containing the game logo text.</value>
         public TextMeshProUGUI logoText;
         
-        /// <value>Property <c>pressButtonText</c> represents the UI element containing the "press any button" text.</value>
-        public TextMeshProUGUI pressButtonText;
+        /// <value>Property <c>pressAnyKeyText</c> represents the UI element containing the "press any button" text.</value>
+        public TextMeshProUGUI pressAnyKeyText;
         
         /// <value>Property <c>mainMenu</c> represents the UI element containing the main menu.</value>
         public GameObject mainMenu;
@@ -46,6 +46,8 @@ namespace PF.Managers
         /// </summary>
         private void Start()
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             StartCoroutine(ShowLogo());
         }
         
@@ -54,11 +56,31 @@ namespace PF.Managers
         /// </summary>
         private void Update()
         {
-            if (Input.anyKeyDown && !mainMenu.activeSelf && logoText.canvasRenderer.GetAlpha() >= 1.0f)
+            if (!mainMenu.activeSelf && logoText.canvasRenderer.GetAlpha() >= 1.0f)
             {
-                StopCoroutine(BlinkText(pressButtonText));
-                pressButtonText.gameObject.SetActive(false);
-                StartCoroutine(ShowMainMenu());
+                if (Input.anyKeyDown && !(Input.GetMouseButtonDown(0)
+                        || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)))
+                {
+                    StopCoroutine(BlinkText(pressAnyKeyText));
+                    pressAnyKeyText.gameObject.SetActive(false);
+                    StartCoroutine(ShowMainMenu());
+                }
+            }
+            
+            if (optionsPanel.activeSelf)
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    ToggleOptions();
+                }
+            }
+            
+            if (creditsPanel.activeSelf)
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    ToggleCredits();
+                }
             }
         }
         
@@ -68,12 +90,12 @@ namespace PF.Managers
         private IEnumerator ShowLogo()
         {
             logoText.canvasRenderer.SetAlpha(0.0f);
-            pressButtonText.canvasRenderer.SetAlpha(0.0f);
+            pressAnyKeyText.canvasRenderer.SetAlpha(0.0f);
             logoText.CrossFadeAlpha(1.0f, 1.5f, false);
             yield return new WaitForSeconds(1.5f);
-            pressButtonText.CrossFadeAlpha(1.0f, 1.5f, false);
+            pressAnyKeyText.CrossFadeAlpha(1.0f, 1.5f, false);
             yield return new WaitForSeconds(1.5f);
-            StartCoroutine(BlinkText(pressButtonText));
+            StartCoroutine(BlinkText(pressAnyKeyText));
         }
 
         /// <summary>
@@ -96,7 +118,6 @@ namespace PF.Managers
         private IEnumerator ShowMainMenu()
         {
             var playerProgress = PlayerPrefsManager.LoadPlayerProgress();
-            Debug.Log(playerProgress);
             foreach (var mainMenuText in _mainMenuTexts)
             {
                 // If element name is "ContinueText", check if there is a saved game
@@ -149,7 +170,17 @@ namespace PF.Managers
             // If option panel is active, prevent the main menu buttons from being clicked
             foreach (var mainMenuText in _mainMenuTexts)
             {
-                mainMenuText.raycastTarget = !optionsPanel.activeSelf;
+                var mainMenuElementButton = mainMenuText.gameObject.GetComponent<Button>();
+                mainMenuElementButton.interactable = !optionsPanel.activeSelf;
+            }
+            // If option panel is active, select the first slider
+            if (optionsPanel.activeSelf)
+            {
+                optionsPanel.GetComponentInChildren<Slider>().Select();
+            }
+            else
+            {
+                selectedButton.Select();
             }
         }
         
@@ -162,7 +193,16 @@ namespace PF.Managers
             // If credits panel is active, prevent the main menu buttons from being clicked
             foreach (var mainMenuText in _mainMenuTexts)
             {
-                mainMenuText.raycastTarget = !creditsPanel.activeSelf;
+                var mainMenuElementButton = mainMenuText.gameObject.GetComponent<Button>();
+                mainMenuElementButton.interactable = !creditsPanel.activeSelf;
+            }
+            if (creditsPanel.activeSelf)
+            {
+                creditsPanel.GetComponentInChildren<Button>().Select();
+            }
+            else
+            {
+                selectedButton.Select();
             }
         }
 
