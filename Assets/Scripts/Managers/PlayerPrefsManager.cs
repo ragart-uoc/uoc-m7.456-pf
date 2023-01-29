@@ -41,7 +41,6 @@ namespace PF.Managers
                 return;
             }
             _instance = this;
-            DontDestroyOnLoad(this.gameObject);
 
             // Load player preferences
             LoadPlayerPrefs();
@@ -70,7 +69,7 @@ namespace PF.Managers
             PlayerPrefs.SetInt("TextSpeed", _textSpeed);
             PlayerPrefs.Save();
         }
-        
+
         /// <summary>
         /// Method <c>ChangeMovementSpeed</c> changes the movement speed.
         /// </summary>
@@ -84,7 +83,7 @@ namespace PF.Managers
         /// <summary>
         /// Method <c>SavePlayerPrefs</c> saves the player preferences.
         /// </summary>
-        private void SavePlayerPrefs()
+        public void SavePlayerPrefs()
         {
             PlayerPrefs.SetInt("Volume", _volume);
             PlayerPrefs.SetInt("TextSpeed", _textSpeed);
@@ -95,7 +94,7 @@ namespace PF.Managers
         /// <summary>
         /// Method <c>LoadPlayerPrefs</c> loads the player preferences.
         /// </summary>
-        private void LoadPlayerPrefs()
+        public void LoadPlayerPrefs()
         {
             _volume = PlayerPrefs.GetInt("Volume", 100);
             _textSpeed = PlayerPrefs.GetInt("TextSpeed", 2);
@@ -114,7 +113,7 @@ namespace PF.Managers
         }
         
         /// <summary>
-        /// Method <c>SavePlayerProgress</c> saves the player progress.
+        /// Method <c>SavePlayerProgress</c> saves the player's progress.
         /// </summary>
         public static void SavePlayerProgress(string progress)
         {
@@ -123,7 +122,7 @@ namespace PF.Managers
         }
         
         /// <summary>
-        /// Method <c>LoadPlayerProgress</c> loads the player progress.
+        /// Method <c>LoadPlayerProgress</c> loads the player's progress.
         /// </summary>
         public static string LoadPlayerProgress()
         {
