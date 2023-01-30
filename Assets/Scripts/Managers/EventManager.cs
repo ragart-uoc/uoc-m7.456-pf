@@ -36,16 +36,45 @@ namespace PF.Managers
             _playerInput = player.GetComponent<PlayerInput>();
         }
 
+        private void Update()
+        {
+            if (dialoguePanel.activeSelf)
+            {
+                if (Input.anyKeyDown && !(Input.GetMouseButtonDown(0)
+                                          || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)))
+                {
+                    if (DialogueManager.currentSegment.bridgeOpen > 0)
+                    {
+                        ToggleBridge(DialogueManager.currentSegment.bridgeOpen);
+                    }
+
+                    switch (DialogueManager.currentSegment)
+                    {
+                        case { ending: > 0 }:
+                            break;
+                        case { nextSegment: > 0 }:
+                            DialogueManager.currentSegment = DialogueManager.segments[DialogueManager.currentSegment.nextSegment];
+                            _dialogueTitleText.text = DialogueManager.currentSegment.speaker;
+                            _dialogueText.text = DialogueManager.currentSegment.content;
+                            break;
+                        default:
+                            dialoguePanel.SetActive(false);
+                            ResumeMovement();
+                            break;
+                    }
+                }
+            }
+        }
+
         public void ToggleGate(string gateNumber)
         {
-            Debug.Log("PUERTA");
             // Get the tilemap collider
             var tilemapCollider = GameObject.Find("Gate" + gateNumber).GetComponent<TilemapCollider2D>();
             // Toggle the tilemap collider
             tilemapCollider.enabled = !tilemapCollider.enabled;
         }
         
-        public void ToggleBridge(string bridgeNumber)
+        public void ToggleBridge(int bridgeNumber)
         {
             // Get the tilemap renderer
             var tilemapRenderer = GameObject.Find("Bridge" + bridgeNumber).GetComponent<TilemapRenderer>();
@@ -71,9 +100,9 @@ namespace PF.Managers
         public void StartDialogue(int dialogueSegmentId)
         {
             StopMovement();
-            DialogueManager.CurrentSegment = DialogueManager.Segments[dialogueSegmentId];
-            _dialogueTitleText.text = DialogueManager.CurrentSegment.speaker;
-            _dialogueText.text = DialogueManager.CurrentSegment.content;
+            DialogueManager.currentSegment = DialogueManager.segments[dialogueSegmentId];
+            _dialogueTitleText.text = DialogueManager.currentSegment.speaker;
+            _dialogueText.text = DialogueManager.currentSegment.content;
             dialoguePanel.SetActive(true);
         }
         /// <summary>

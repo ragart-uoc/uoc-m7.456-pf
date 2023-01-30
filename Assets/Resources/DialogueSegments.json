@@ -58,8 +58,161 @@
         "speaker": "Character",
         "content": "What if...?",
         "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 8,
+        "speaker": "Character",
+        "content": "Where am I...?",
+        "nextSegment": 9,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 9,
+        "speaker": "Character",
+        "content": "The phone call... my friend...",
+        "nextSegment": 10,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 10,
+        "speaker": "Character",
+        "content": "I need to do something.",
+        "nextSegment": 11,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 11,
+        "speaker": "Character",
+        "content": "But what?",
+        "nextSegment": 12,
         "bridgeOpen": 1,
         "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 12,
+        "speaker": "Character",
+        "content": "A bridge. I wonder what's on the other side.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 13,
+        "speaker": "Character",
+        "content": "Not again... What did I do wrong?",
+        "nextSegment": null,
+        "bridgeOpen": 1,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 14,
+        "speaker": "Character",
+        "content": "Wait... That's new.",
+        "nextSegment": null,
+        "bridgeOpen": 9,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 15,
+        "speaker": "Character",
+        "content": "Hey... What's going on?",
+        "nextSegment": 16,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 16,
+        "speaker": "Character",
+        "content": "It's... me?",
+        "nextSegment": 17,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 17,
+        "speaker": "???",
+        "content": "NOT EXACTLY.",
+        "nextSegment": 18,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 18,
+        "speaker": "???",
+        "content": "I AM THE MECHANISM OF YOUR BRAIN THAT PROTECTS YOU FROM REALITY.",
+        "nextSegment": 19,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 19,
+        "speaker": "Character",
+        "content": "Protect... me? Who are you? Where is my friend?",
+        "nextSegment": 20,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 20,
+        "speaker": "Logos",
+        "content": "THERE IS NO FRIEND. THERE IS ONLY YOU. YOU'RE DYING AND I AM YOUR WAY OF COPING. I AM LOGOS.",
+        "nextSegment": 21,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 21,
+        "speaker": "Character",
+        "content": "I don't understand...",
+        "nextSegment": 22,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 22,
+        "speaker": "Logos",
+        "content": "THERE IS NO NEED TO UNDERSTAND.",
+        "nextSegment": 23,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 23,
+        "speaker": "Character",
+        "content": "Then, all those deaths... It was all me? How have I really died?",
+        "nextSegment": 24,
+        "bridgeOpen": null,
+        "ending": null,
+        "affectingWords": []
+    },
+    {
+        "id": 24,
+        "speaker": "Logos",
+        "content": "DOES IT REALLY MATTER? ALL THAT MATTERS IS THE TRUTH. AND THE TRUTH IS THAT YOU ARE DYING. NOW IT'S TIME.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 9,
         "affectingWords": []
     }
 ]

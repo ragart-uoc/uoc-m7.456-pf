@@ -9,23 +9,23 @@ namespace PF.Managers
     /// </summary>
     public static class DialogueManager
     {
-        /// <value>Property <c>Words</c> contains the words.</value>
-        public static string[] Words;
+        /// <value>Property <c>words</c> contains the words.</value>
+        public static string[] words;
         
-        /// <value>Property <c>WordsLearned</c> contains the words learned.</value>
-        public static string[] WordsLearned;
+        /// <value>Property <c>wordsLearned</c> contains the words learned.</value>
+        public static string[] wordsLearned;
         
-        /// <value>Property <c>WordsEquipped</c> contains the words equipped.</value>
-        public static string[] WordsEquipped;
+        /// <value>Property <c>wordsEquipped</c> contains the words equipped.</value>
+        public static string[] wordsEquipped;
         
-        /// <value>Property <c>WordsToLearn</c> contains the words to learn.</value>
-        public static string[] WordsToLearn;
+        /// <value>Property <c>wordsToLearn</c> contains the words to learn.</value>
+        public static string[] wordsToLearn;
         
-        /// <value>Property <c>Segments</c> contains the dialogue segments.</value>
-        public static Dictionary<int, DialogueSegment> Segments;
+        /// <value>Property <c>segments</c> contains the dialogue segments.</value>
+        public static Dictionary<int, DialogueSegment> segments;
         
-        /// <value>Property <c>CurrentSegment</c> represents the current dialogue segment.</value>
-        public static DialogueSegment CurrentSegment;
+        /// <value>Property <c>currentSegment</c> represents the current dialogue segment.</value>
+        public static DialogueSegment currentSegment;
 
         /// <summary>
         /// Method <c>Awake</c> is called when the script instance is being loaded.
@@ -36,39 +36,9 @@ namespace PF.Managers
             ImportWords();
             
             // Load dialogue segments
-            Segments = new Dictionary<int, DialogueSegment>();
+            segments = new Dictionary<int, DialogueSegment>();
             ImportDialogueSegments();
         }
-        
-        /// <summary>
-        /// Method <c>Start</c> is called every frame, if the MonoBehaviour is enabled.
-        /// </summary>
-        /*
-        private void Update()
-        {
-            if (dialoguePanel.activeSelf)
-            {
-                if (Input.anyKeyDown && !(Input.GetMouseButtonDown(0)
-                                          || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)))
-                {
-                    if (_currentSegment != null)
-                    {
-                        if (_currentSegment.nextSegment > 0)
-                        {
-                            _currentSegment = _segments[_currentSegment.nextSegment];
-                            _dialogueTitleText.text = _currentSegment.speaker;
-                            _dialogueText.text = _currentSegment.content;
-                        }
-                        else
-                        {
-                            dialoguePanel.SetActive(false);
-                            ResumeMovement();
-                        }
-                    }
-                }
-            }
-        }
-        */
         
         /// <summary>
         /// Method <c>ImportWords</c> imports the words from the JSON file.
@@ -76,7 +46,7 @@ namespace PF.Managers
         private static void ImportWords()
         {
             var wordsJson = Resources.Load<TextAsset>("Words");
-            Words = JsonUtility
+            words = JsonUtility
                 .FromJson<DialogueWordList>("{\"words\":" + wordsJson.text + "}").words;
         }
 
@@ -91,7 +61,7 @@ namespace PF.Managers
                 .dialogueSegments;
             foreach (var dialogueSegment in dialogueSegments)
             {
-                Segments.Add(dialogueSegment.id, dialogueSegment);
+                segments.Add(dialogueSegment.id, dialogueSegment);
             }
         }
     }
