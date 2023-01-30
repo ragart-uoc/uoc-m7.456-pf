@@ -1,5 +1,8 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using TMPro;
+using PF.Controllers;
 
 namespace PF.Managers
 {
@@ -8,39 +11,29 @@ namespace PF.Managers
     /// </summary>
     public class EventManager : MonoBehaviour
     {
-        /// <value>Property <c>_instance</c> represents the instance of the TileManager.</value>
-        private EventManager _instance;
+        /// <value>Property <c>dialoguePanel</c> represents the UI element containing the dialogue panel.</value>
+        public GameObject dialoguePanel;
 
-        /// <summary>
-        /// Method <c>Awake</c> is called when the script instance is being loaded.
-        /// </summary>
-        private void Awake()
-        {
-            // Singleton pattern
-            if (_instance != null && _instance != this)
-            {
-                Destroy(this.gameObject);
-                return;
-            }
-            _instance = this;
-        }
+        /// <value>Property <c>dialogueTitleText</c> represents the UI element containing the dialogue title text.</value>
+        private TextMeshProUGUI _dialogueTitleText;
         
-        /// <summary>
-        /// Method <c>DeleteEventFile</c> deletes the event tile at the given position.
-        /// </summary>
-        public void DeleteEventTile(string position)
-        {
-            Debug.Log("EVENTO");
-            // Get the tilemap
-            var tilemap = GameObject.FindWithTag("Event").GetComponent<Tilemap>();
-            // Get the tile position
-            var tilePosition = new Vector3Int(
-                int.Parse(position.Split(',')[0]),
-                int.Parse(position.Split(',')[1]),
-                0
-            );
-            // Set the tile to null
-            tilemap.SetTile(tilePosition, null);
+        /// <value>Property <c>dialogueText</c> represents the UI element containing the dialogue text.</value>
+        private TextMeshProUGUI _dialogueText;
+
+        /// <value>Property <c>player</c> represents the gameobject for the player.</value>
+        public GameObject player;
+        
+        /// <value>Property <c>_playerController</c> represents the player's controller.</value>
+        private PlayerController _playerController;
+        
+        /// <value>Property <c>_playerInput</c> represents the player's input.</value>
+        private PlayerInput _playerInput;
+
+        private void Awake(){
+            _dialogueTitleText = dialoguePanel.transform.Find("DialogueTitleText").GetComponent<TextMeshProUGUI>();
+            _dialogueText = dialoguePanel.transform.Find("DialogueText").GetComponent<TextMeshProUGUI>();
+            _playerController = player.GetComponent<PlayerController>();
+            _playerInput = player.GetComponent<PlayerInput>();
         }
 
         public void ToggleGate(string gateNumber)
@@ -70,6 +63,35 @@ namespace PF.Managers
             audioSource.clip = audioClip;
             // Play the audio clip
             audioSource.Play();
+        }
+        
+        /// <summary>
+        /// Method <c>StartDialogue</c> starts a dialogue sequence.
+        /// </summary>
+        public void StartDialogue(int dialogueSegmentId)
+        {
+            StopMovement();
+            DialogueManager.CurrentSegment = DialogueManager.Segments[dialogueSegmentId];
+            _dialogueTitleText.text = DialogueManager.CurrentSegment.speaker;
+            _dialogueText.text = DialogueManager.CurrentSegment.content;
+            dialoguePanel.SetActive(true);
+        }
+        /// <summary>
+        /// Method <c>StopMovement</c> prevents the player from moving.
+        /// </summary>
+        private void StopMovement()
+        {
+            _playerController.enabled = false;
+            _playerInput.enabled = false;
+        }
+        
+        /// <summary>
+        /// Method <c>ResumeMovement</c> resumes the player's movement.
+        /// </summary>
+        private void ResumeMovement()
+        {
+            _playerController.enabled = true;
+            _playerInput.enabled = true;
         }
     }
 }

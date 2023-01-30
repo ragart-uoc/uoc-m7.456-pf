@@ -74,13 +74,9 @@ Además, para poder llevar a cabo la propuesta, se han utilizado varios de los c
 - Se han utilizado `tilemaps` isométricos para desplegar la escena de juego. A efectos de simular la superposición entre elementos, se han usado varios `tilemaps Z as Y` en diferentes `sorting layers` y con niveles diferentes para el valor Z. Además, debido a la complejidad de la escena de juego, se han elaborado `tiles` con formas similares a los bordes de los `sprites` utilizados para definir las colisiones. Tal y como puede observarse en la imagen siguiente, se han añadido varios tipos de `tiles` para colisiones:
   - Los `tiles` rosas son de carácter estáticos y se usan para definir los bordes exteriores de la escena.
   - Los `tiles` azules son de carácter temporal y se usan para definir las barreras entre las escenas, que desaparecer cuando se cumplen ciertas condiciones.
-  - Los `tiles` verdes disparan uno o varios eventos cuando el jugador entra en contacto con ellos.
+  - Los `tiles` verdes no son realmente `tiles`, sino objetos que disparan uno o varios eventos cuando el jugador entra en contacto con ellos.
 
 ![Captura de pantalla de la vista de Grid de Unity durante el desarrollo de Logos](https://folio-uploads-pro.s3.eu-west-1.amazonaws.com/wp-content/uploads/sites/8519/2023/01/29203515/imagen_2023-01-29_213514095.png)
-
-- Para facilitar la implementación de eventos dentro del `tilemap`, se ha utilizado la utilidad "Event Tilemaps" de NTWalkers, que permite configurar colisiones individuales para cada tile y asignarles métodos públicos para ejecutarse cuando un objeto de juego determinado entre en contacto.
-
-![Captura de pantalla de la configuración del componente EventTilemaps](https://folio-uploads-pro.s3.eu-west-1.amazonaws.com/wp-content/uploads/sites/8519/2023/01/29205217/imagen_2023-01-29_215215631.png)
 
 - Los `tiles` de las diferentes capas se han añadido mediante el uso de `palettes`.
 
@@ -140,10 +136,6 @@ En el momento de la publicación de la propuesta, no fue posible llevar a cabo l
 - "Dark Fallout" - remaxim - https://opengameart.org/content/dark-fallout
 - "Dark Blue" - OveMelaa - https://opengameart.org/content/ove-melaa-dark-blue-orchestral-tune
 - "Mist Forest" - Janne Hanhisuanto [Radakan] - https://opengameart.org/content/radakan-mist-forest
-
-### Scripts y componentes
-
-- "Tilemap Events" - NTWalkers - https://github.com/NTWalkers/unitytilemapevents
 
 ## Referencias
 
