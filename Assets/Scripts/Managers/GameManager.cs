@@ -1,6 +1,8 @@
+using NTW.TilemapEvents;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using PF.Entities;
+using UnityEngine.Tilemaps;
 
 namespace PF.Managers
 {
@@ -69,6 +71,13 @@ namespace PF.Managers
             {
                 case "Game":
                     _player = GameObject.FindWithTag("Player");
+                    // Get all tilemaps with tag "EditorOnly"
+                    var tilemaps = GameObject.FindGameObjectsWithTag("EditorOnly");
+                    // Disable all tilemaps with tag "EditorOnly"
+                    foreach (var tilemap in tilemaps)
+                    {
+                        tilemap.GetComponent<TilemapRenderer>().enabled = false;
+                    }
                     break;
             }
         }

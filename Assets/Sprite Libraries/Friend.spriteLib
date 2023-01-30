@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: IdleDown
+    m_Hash: 526694748
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Lanto_Charas (66)_1
+      m_Hash: 30765706
+      m_Sprite: {fileID: -785943524, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -785943524, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 1
+  - m_Name: WalkDown
+    m_Hash: 459082627
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Lanto_Charas (66)_0
+      m_Hash: 919749148
+      m_Sprite: {fileID: -1468952705, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1468952705, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+    - m_Name: Lanto_Charas (66)_2
+      m_Hash: 417080112
+      m_Sprite: {fileID: 1598842870, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1598842870, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: IdleLeft
+    m_Hash: 972869135
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Lanto_Charas (66)_4
+      m_Hash: 834635269
+      m_Sprite: {fileID: -1664118754, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1664118754, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 1
+  - m_Name: WalkLeft
+    m_Hash: 1036352720
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Lanto_Charas (66)_3
+      m_Hash: 802886566
+      m_Sprite: {fileID: 1663039553, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1663039553, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+    - m_Name: Lanto_Charas (66)_5
+      m_Hash: 112768659
+      m_Sprite: {fileID: -704072805, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -704072805, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: IdleRight
+    m_Hash: 664738502
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Lanto_Charas (66)_7
+      m_Hash: 683071423
+      m_Sprite: {fileID: 1234363365, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1234363365, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 1
+  - m_Name: WalkRight
+    m_Hash: 829942833
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Lanto_Charas (66)_6
+      m_Hash: 531752745
+      m_Sprite: {fileID: -392155885, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -392155885, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+    - m_Name: Lanto_Charas (66)_8
+      m_Hash: 940165678
+      m_Sprite: {fileID: 442426847, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 442426847, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: IdleUp
+    m_Hash: 486716119
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Lanto_Charas (66)_10
+      m_Hash: 959930477
+      m_Sprite: {fileID: 830253593, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 830253593, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 1
+  - m_Name: WalkUp
+    m_Hash: 648049478
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Lanto_Charas (66)_9
+      m_Hash: 252639928
+      m_Sprite: {fileID: 1624615195, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1624615195, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+    - m_Name: Lanto_Charas (66)_11
+      m_Hash: 238047483
+      m_Sprite: {fileID: 323853857, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 323853857, guid: 970ae9b0b64a44843aec7dc0ea2aa721, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  m_PrimaryLibraryGUID: 

@@ -22,10 +22,10 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1.8122928e-25
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: 0.029624099
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
         weightedMode: 0
         inWeight: 0
         outWeight: 0
@@ -78,10 +78,10 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1.8122928e-25
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: 0.029624099
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
         weightedMode: 0
         inWeight: 0
         outWeight: 0
