@@ -1,5 +1,7 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using TMPro;
@@ -14,13 +16,13 @@ namespace PF.Managers
     {
         /// <value>Property <c>_instance</c> represents the instance of the GameManager.</value>
         private static GameManager _instance;
-        
+
         /// <value>Property <c>Instance</c> represents the instance of the GameManager.</value>
         private string _currentScene;
 
         /// <value>Property <c>_persistentDataManager</c> represents the instance of the PersistentDataManager.</value>
         private PersistentDataManager _persistentDataManager;
-        
+
         /// <value>Property <c>_wordPrefab</c> represents the prefab for the word.</value>
         public GameObject wordPrefab;
 
@@ -29,34 +31,37 @@ namespace PF.Managers
 
         /// <value>Property <c>_replacingWords</c> represents whether the player is replacing words.</value>
         private bool _replacingWords;
-        
+
         /// <value>Property <c>_replacementWord</c> represents the word that will be added instead of a equipped one.</value>
         private string _replacementWord;
-        
+
+        /// <value>Property <c>_wordUsageErrors</c> represents the number of times that the wrong word was used.</value>
+        private int _wordUsageErrors;
+
         /// <value>Property <c>dialoguePanel</c> represents the UI element containing the dialogue panel.</value>
         public GameObject dialoguePanel;
-        
+
         /// <value>Property <c>messagePanel</c> represents the UI element containing the message panel.</value>
         public GameObject messagePanel;
 
         /// <value>Property <c>_messageTitleText</c> represents the UI element containing the message title text.</value>
         private TextMeshProUGUI _messageTitleText;
-        
+
         /// <value>Property <c>_messageText</c> represents the UI element containing the message text.</value>
         private TextMeshProUGUI _messageText;
 
         /// <value>Property <c>player</c> represents the gameobject for the player.</value>
         public GameObject player;
-        
+
         /// <value>Property <c>_playerController</c> represents the player's controller.</value>
         private PlayerController _playerController;
-        
+
         /// <value>Property <c>_playerInput</c> represents the player's input.</value>
         private PlayerInput _playerInput;
-        
+
         /// <value>Property <c>_audioSource</c> represents the audio source.</value>
         private AudioSource _audioSource;
-        
+
         /// <value>Property <c>_doorOpen</c> represents the door open audio clip.</value>
         private AudioClip _doorOpen;
 
@@ -71,8 +76,9 @@ namespace PF.Managers
                 Destroy(this.gameObject);
                 return;
             }
+
             _instance = this;
-            
+
             // Get the PersistentDataManager
             _persistentDataManager = GameObject.Find("PersistentDataManager").GetComponent<PersistentDataManager>();
 
@@ -84,34 +90,30 @@ namespace PF.Managers
             _audioSource = GetComponent<AudioSource>();
             _doorOpen = Resources.Load<AudioClip>("Sounds/door");
         }
-        
+
         /// <summary>
         /// Method <c>Start</c> is called on the frame when a script is enabled just before any of the Update methods are called the first time.
         /// </summary>
         private void Start()
         {
-            // DEBUG
-            _persistentDataManager.equippedWords.Add("death");
-            _persistentDataManager.equippedWords.Add("life");
-            _persistentDataManager.equippedWords.Add("serendipity");
-            _persistentDataManager.equippedWords.Add("myself");
             DialogueManager.RefreshWords(_persistentDataManager.learnedWords, _persistentDataManager.equippedWords);
-            
+
             // Disable the renderer of all GameObjects with tag "Collisions"
             var collisionObjects = GameObject.FindGameObjectsWithTag("Collisions");
             foreach (var collisionObject in collisionObjects)
             {
                 collisionObject.GetComponent<Renderer>().enabled = false;
             }
-            
+
             // Remove all equipped words in the UI and add the currently equipped
             foreach (Transform child in wordList.transform)
             {
                 Destroy(child.gameObject);
             }
+
             foreach (var word in _persistentDataManager.equippedWords)
             {
-                AddEquippedWordToUI(word);
+                AddEquippedWordListUI(word);
             }
 
             // If all deaths are seen, load final dialogue
@@ -134,7 +136,7 @@ namespace PF.Managers
                 ToggleGate("1A");
             }
         }
-        
+
         /// <summary>
         /// Method <c>Update</c> is called every frame, if the MonoBehaviour is enabled.
         /// </summary>
@@ -145,29 +147,7 @@ namespace PF.Managers
                 if (Input.anyKeyDown && !(Input.GetMouseButtonDown(0)
                                           || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)))
                 {
-                    if (!_replacingWords)
-                    {
-                        if (DialogueManager.currentSegment.bridgeOpen > 0)
-                        {
-                            ToggleBridge(DialogueManager.currentSegment.bridgeOpen);
-                        }
-
-                        switch (DialogueManager.currentSegment)
-                        {
-                            case { ending: > 0 }:
-                                break;
-                            case { nextSegment: > 0 }:
-                                DialogueManager.SetCurrentSegment(DialogueManager.currentSegment.nextSegment);
-                                _messageTitleText.text = DialogueManager.currentSegment.speaker;
-                                _messageText.text =
-                                    DialogueManager.ProcessText(DialogueManager.currentSegment.nextSegment);
-                                break;
-                            default:
-                                dialoguePanel.SetActive(false);
-                                ResumeMovement();
-                                break;
-                        }
-                    }
+                    ContinueDialogue();
                 }
             }
         }
@@ -182,7 +162,7 @@ namespace PF.Managers
             // Toggle the tilemap collider
             tilemapCollider.enabled = !tilemapCollider.enabled;
         }
-        
+
         /// <summary>
         /// Method <c>ToggleBridge</c> toggles the tilemap for a bridge.
         /// </summary>
@@ -195,7 +175,7 @@ namespace PF.Managers
             // Play the door open sound
             _audioSource.PlayOneShot(_doorOpen);
         }
-        
+
         /// <summary>
         /// Method <c>SwitchBackgroundMusic</c> switches the background music.
         /// </summary>
@@ -210,20 +190,57 @@ namespace PF.Managers
             // Play the audio clip
             audioSource.Play();
         }
-        
+
         /// <summary>
         /// Method <c>StartDialogue</c> starts a dialogue sequence.
         /// </summary>
         public void StartDialogue(int dialogueSegmentId)
         {
             StopMovement();
-            DialogueManager.SetCurrentSegment(dialogueSegmentId);
-            _messageTitleText.text = DialogueManager.currentSegment.speaker;
-            _messageText.text = DialogueManager.ProcessText(dialogueSegmentId);
+            LoadDialogue(dialogueSegmentId, false);
             dialoguePanel.SetActive(true);
         }
 
         /// <summary>
+        /// Method <c>ContinueDialogue</c> continues the dialogue sequence.
+        /// </summary>
+        private void ContinueDialogue()
+        {
+            if (_replacingWords) return;
+
+            if (DialogueManager.currentSegment.bridgeOpen > 0)
+            {
+                ToggleBridge(DialogueManager.currentSegment.bridgeOpen);
+            }
+
+            switch (DialogueManager.currentSegment)
+            {
+                case { ending: > 0 }:
+                    _persistentDataManager.endingReached = DialogueManager.currentSegment.ending;
+                    SceneManager.LoadScene("Ending");
+                    break;
+                case { nextSegment: > 0 }:
+                    LoadDialogue(DialogueManager.currentSegment.nextSegment, false);
+                    break;
+                default:
+                    dialoguePanel.SetActive(false);
+                    ResumeMovement();
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Method <c>LoadDialogue</c> loads the current segment in the dialogue sequence.
+        /// </summary>
+        private void LoadDialogue(int dialogueSegmentId, bool forceInteraction)
+        {
+            DialogueManager.SetCurrentSegment(dialogueSegmentId);
+            _messageTitleText.text = DialogueManager.currentSegment.speaker;
+            _messageText.text = DialogueManager.ProcessText(DialogueManager.currentSegment.nextSegment);
+            RefreshEquippedWordListUI(forceInteraction);
+        }
+
+    /// <summary>
         /// Method <c>StopMovement</c> prevents the player from moving.
         /// </summary>
         private void StopMovement()
@@ -241,6 +258,9 @@ namespace PF.Managers
             _playerInput.enabled = true;
         }
         
+        /// <summary>
+        /// Method <c>EquipWord</c> equips a word.
+        /// </summary>
         public void EquipWord(string word)
         {
             if (_persistentDataManager.equippedWords.Contains(word))
@@ -248,6 +268,7 @@ namespace PF.Managers
             if (_persistentDataManager.equippedWords.Count < 4)
             {
                 SaveEquippedWord(word);
+                ContinueDialogue();
             }
             else
             {
@@ -255,26 +276,31 @@ namespace PF.Managers
             }
         }
 
+        /// <summary>
+        /// Method <c>SaveEquippedWord</c> saves an equipped word.
+        /// </summary>
         private void SaveEquippedWord(string word)
         {
             _persistentDataManager.equippedWords.Add(word);
             _persistentDataManager.SavePlayerProgress();
             DialogueManager.RefreshWords(_persistentDataManager.learnedWords, _persistentDataManager.equippedWords);
-            AddEquippedWordToUI(word);
+            AddEquippedWordListUI(word);
         }
         
+        /// <summary>
+        ///  Method <c>ReplaceEquippedWord</c> replaces an equipped word.
+        /// </summary>
         private void ReplaceEquippedWord(string word)
         {
             _replacingWords = true;
             _replacementWord = word;
             _messageText.text = "You can't carry any more words, please drop one first.";
-            if (DialogueManager.currentSegment.interactable) return;
-            foreach (var child in wordList.GetComponentsInChildren<TextMeshProUGUI>())
-            {
-                child.color = new Color(0, 0, 0, 1f);
-            }
+            RefreshEquippedWordListUI(true);
         }
         
+        /// <summary>
+        /// Method <c>RemoveEquippedWord</c> removes an equipped word.
+        /// </summary>
         private void RemoveEquippedWord(string word)
         {
             _persistentDataManager.equippedWords.Remove(word);
@@ -284,36 +310,68 @@ namespace PF.Managers
             _messageText.text = DialogueManager.ProcessText(DialogueManager.currentSegment.id);
         }
         
-        private void UseOrReplaceWord(string word)
+        /// <summary>
+        /// Method <c>UseOrReplaceWord</c> uses or replaces an equipped word.
+        /// </summary>
+        private void UseOrReplaceEquippedWord(string word)
         {
+            // Replace equipped word
             if (_replacingWords)
             {
                 RemoveEquippedWord(word);
                 SaveEquippedWord(_replacementWord);
                 _replacingWords = false;
-                _messageText.text = DialogueManager.ProcessText(DialogueManager.currentSegment.id);
-                if (DialogueManager.currentSegment.interactable) return;
-                foreach (var child in wordList.GetComponentsInChildren<TextMeshProUGUI>())
-                {
-                    child.color = new Color(0, 0, 0, 0.2f);
-                }
+                ContinueDialogue();
             }
+            // Use equipped word
             else
             {
-                
+                var usableWord = DialogueManager.currentSegment.usableWords.SingleOrDefault(item => item.word == word);
+                if (usableWord != null)
+                {
+                    LoadDialogue(usableWord.nextSegment, false);
+                }
+                else
+                {
+                    var currentSegment = DialogueManager.currentSegment;
+                    LoadDialogue(29, false);
+                    DialogueManager.currentSegment.nextSegment = currentSegment.nextSegment;
+                    _wordUsageErrors++;
+                    if (_wordUsageErrors >= 10)
+                    {
+                        DialogueManager.currentSegment.ending = 4;
+                    }
+                }
             }
         }
         
-        private void AddEquippedWordToUI(string word)
+        /// <summary>
+        /// Method <c>AddEquippedWordListUI</c> adds an equipped word to the UI.
+        /// </summary>
+        private void AddEquippedWordListUI(string word)
         {
             var wordObject = Instantiate(wordPrefab, wordList.transform);
             wordObject.name = "Word-" + word;
             var tmpComponent = wordObject.GetComponentInChildren<TextMeshProUGUI>();
             tmpComponent.text = word;
-            tmpComponent.color = (!DialogueManager.currentSegment.interactable)
+            tmpComponent.color = DialogueManager.currentSegment is not { interactable: true }
                 ? new Color(0, 0, 0, 0.2f)
                 : new Color(0, 0, 0, 1f);
-            wordObject.GetComponent<Button>().onClick.AddListener(() => UseOrReplaceWord(word));
+            wordObject.GetComponent<Button>().onClick.AddListener(() => UseOrReplaceEquippedWord(word));
+        }
+
+        /// <summary>
+        /// Method <c>RefreshEquippedWordListUI</c> refreshes the equipped word list.
+        /// </summary>
+        private void RefreshEquippedWordListUI(bool forceInteraction)
+        {
+            if (DialogueManager.currentSegment == null) return;
+            foreach (var child in wordList.GetComponentsInChildren<TextMeshProUGUI>())
+            {
+                child.color = (DialogueManager.currentSegment.interactable | forceInteraction)
+                    ? new Color(0, 0, 0, 1f)
+                    : new Color(0, 0, 0, 0.2f);
+            }
         }
     }
 }

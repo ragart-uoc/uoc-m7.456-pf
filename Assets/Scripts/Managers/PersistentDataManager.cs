@@ -21,6 +21,9 @@ namespace PF.Managers
         /// <value>Property <c>equippedWords</c> represents the words that are equipped.</value>
         public List<string> equippedWords;
 
+        /// <value>Property <c>endingReached</c> represents the ending that the player has reached in the current loop iteration.</value>
+        public int endingReached;
+
         /// <summary>
         /// Method <c>Awake</c> is called when the script instance is being loaded.
         /// </summary>

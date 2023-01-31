@@ -12,6 +12,6 @@ namespace PF.Entities
         public int bridgeOpen;
         public int ending;
         public bool interactable;
-        public List<DialogueAffectingWord> affectingWords;
+        public List<DialogueUsableWord> usableWords;
     }
 }
