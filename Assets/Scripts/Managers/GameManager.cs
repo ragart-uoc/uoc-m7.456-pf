@@ -240,7 +240,7 @@ namespace PF.Managers
             RefreshEquippedWordListUI(forceInteraction);
         }
 
-    /// <summary>
+        /// <summary>
         /// Method <c>StopMovement</c> prevents the player from moving.
         /// </summary>
         private void StopMovement()
