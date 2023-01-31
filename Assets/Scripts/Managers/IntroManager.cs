@@ -11,16 +11,31 @@ namespace PF.Managers
     /// </summary>
     public class IntroManager : MonoBehaviour
     {
+        /// <value>Property <c>room</c> represents the tilemap for the room.</value>
         public Tilemap room;
+        
+        /// <value>Property <c>unknown</c> represents the tilemap for the unknown.</value>
         public Tilemap unknown;
+        
+        /// <value>Property <c>player</c> represents the sprite renderer for the player.</value>
         public SpriteRenderer player;
-
+        
+        /// <value>Property <c>dialoguePanel</c> represents the transform for the dialogue panel.</value>
         public Transform dialoguePanel;
+        
+        /// <value>Property <c>dialogueTitleText</c> represents the TextMeshProUGUI component for the dialogue title.</value>
         private TextMeshProUGUI _dialogueTitleText;
+        
+        /// <value>Property <c>dialogueText</c> represents the TextMeshProUGUI component for the dialogue text.</value>
         private TextMeshProUGUI _dialogueText;
 
+        /// <value>Property <c>_audioSource</c> represents the AudioSource component.</value>
         private AudioSource _audioSource;
+        
+        /// <value>Property <c>_phoneRing</c> represents the phone ring audio clip.</value>
         private AudioClip _phoneRing;
+        
+        /// <value>Property <c>_sadMusic</c> represents the sad music audio clip.</value>
         private AudioClip _sadMusic;
 
         /// <summary>

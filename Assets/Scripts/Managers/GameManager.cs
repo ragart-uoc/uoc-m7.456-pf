@@ -334,12 +334,18 @@ namespace PF.Managers
                 else
                 {
                     var currentSegment = DialogueManager.currentSegment;
-                    LoadDialogue(29, false);
-                    DialogueManager.currentSegment.nextSegment = currentSegment.nextSegment;
                     _wordUsageErrors++;
                     if (_wordUsageErrors >= 10)
                     {
+                        LoadDialogue(25, false);
                         DialogueManager.currentSegment.ending = 4;
+                    }
+                    else
+                    {
+                        LoadDialogue(29, false);
+                        DialogueManager.currentSegment.nextSegment = currentSegment.nextSegment;
+                        DialogueManager.currentSegment.bridgeOpen = currentSegment.bridgeOpen;
+                        DialogueManager.currentSegment.ending = currentSegment.ending;
                     }
                 }
             }

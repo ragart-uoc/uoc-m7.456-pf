@@ -168,6 +168,7 @@ MonoBehaviour:
     wordsEquipped: []
   learnedWords: []
   equippedWords: []
+  endingReached: 0
 --- !u!4 &95531652
 Transform:
   m_ObjectHideFlags: 0
@@ -1490,7 +1491,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Choose up to 4 words
+  m_text: Lorem ipsum dolor sit amet
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9cfd5dd6110dacd4dbc4990365ab3f75, type: 2}
   m_sharedMaterial: {fileID: -3808848578001791464, guid: 9cfd5dd6110dacd4dbc4990365ab3f75, type: 2}
@@ -1884,7 +1885,7 @@ GameObject:
   - component: {fileID: 1612301657}
   - component: {fileID: 1612301658}
   m_Layer: 0
-  m_Name: WorsSelectionManager
+  m_Name: WordSelectionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1917,6 +1918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91a9d5ea462ce12418e2b51255f55075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: {fileID: 1314465911}
   wordPrefab: {fileID: 1666115199543831656, guid: a2c9660717878054ab5a98f3bd3e2073, type: 3}
   wordList: {fileID: 1244406495}
 --- !u!1001 &1746995224

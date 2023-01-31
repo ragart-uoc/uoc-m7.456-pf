@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: c2bcb642e7fd3b84fa6686d87715d5d9
   - enabled: 1
+    path: Assets/Scenes/WordSelection.unity
+    guid: 05df48188ca780642a007b0c84aee52d
+  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 3851c6d2d8d074843abee1854f87943b
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 68af177ee33a9294f9c0d949304c8fb3
   m_configObjects: {}

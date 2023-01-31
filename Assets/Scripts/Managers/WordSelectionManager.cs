@@ -55,15 +55,6 @@ namespace PF.Managers
         /// </summary>
         private void Start()
         {
-            // DEBUG
-            _persistentDataManager.learnedWords.Add("death");
-            _persistentDataManager.learnedWords.Add("love");
-            _persistentDataManager.learnedWords.Add("serendipity");
-            _persistentDataManager.learnedWords.Add("happiness");
-            _persistentDataManager.learnedWords.Add("loneliness");
-            _persistentDataManager.learnedWords.Add("fear");
-            _persistentDataManager.learnedWords.Add("time");
-            
             // Change the title of the page depending on the number of learned words
             var learnedWordsCount = _persistentDataManager.learnedWords.Count;
             if (learnedWordsCount <= 0)
