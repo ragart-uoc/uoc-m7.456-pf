@@ -20,7 +20,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -1522,9 +1522,9 @@ TextureImporter:
       char_a_p1_0bas_humn_v01_12: 188723743
       char_a_p1_0bas_humn_v01_16: -1256476781
       char_a_p1_0bas_humn_v01_30: 996114526
-      char_a_p1_0bas_humn_v01_10: -1396807362
-      char_a_p1_0bas_humn_v01_41: 963398452
       char_a_p1_0bas_humn_v01_52: -597253467
+      char_a_p1_0bas_humn_v01_41: 963398452
+      char_a_p1_0bas_humn_v01_10: -1396807362
       char_a_p1_0bas_humn_v01_18: 343535865
       char_a_p1_0bas_humn_v01_49: 327788162
       char_a_p1_0bas_humn_v01_40: -180123910

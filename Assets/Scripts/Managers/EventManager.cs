@@ -28,12 +28,20 @@ namespace PF.Managers
         
         /// <value>Property <c>_playerInput</c> represents the player's input.</value>
         private PlayerInput _playerInput;
+        
+        /// <value>Property <c>_audioSource</c> represents the audio source.</value>
+        private AudioSource _audioSource;
+        
+        /// <value>Property <c>_doorOpen</c> represents the door open audio clip.</value>
+        private AudioClip _doorOpen;
 
         private void Awake(){
             _dialogueTitleText = dialoguePanel.transform.Find("DialogueTitleText").GetComponent<TextMeshProUGUI>();
             _dialogueText = dialoguePanel.transform.Find("DialogueText").GetComponent<TextMeshProUGUI>();
             _playerController = player.GetComponent<PlayerController>();
             _playerInput = player.GetComponent<PlayerInput>();
+            _audioSource = GetComponent<AudioSource>();
+            _doorOpen = Resources.Load<AudioClip>("Sounds/door");
         }
 
         private void Update()
@@ -53,7 +61,7 @@ namespace PF.Managers
                         case { ending: > 0 }:
                             break;
                         case { nextSegment: > 0 }:
-                            DialogueManager.currentSegment = DialogueManager.segments[DialogueManager.currentSegment.nextSegment];
+                            DialogueManager.currentSegment = DialogueManager.Segments[DialogueManager.currentSegment.nextSegment];
                             _dialogueTitleText.text = DialogueManager.currentSegment.speaker;
                             _dialogueText.text = DialogueManager.currentSegment.content;
                             break;
@@ -80,6 +88,8 @@ namespace PF.Managers
             var tilemapRenderer = GameObject.Find("Bridge" + bridgeNumber).GetComponent<TilemapRenderer>();
             // Toggle the tilemap
             tilemapRenderer.enabled = !tilemapRenderer.enabled;
+            // Play the door open sound
+            _audioSource.PlayOneShot(_doorOpen);
         }
         
         public void SwitchBackgroundMusic(string musicName)
@@ -100,7 +110,7 @@ namespace PF.Managers
         public void StartDialogue(int dialogueSegmentId)
         {
             StopMovement();
-            DialogueManager.currentSegment = DialogueManager.segments[dialogueSegmentId];
+            DialogueManager.currentSegment = DialogueManager.Segments[dialogueSegmentId];
             _dialogueTitleText.text = DialogueManager.currentSegment.speaker;
             _dialogueText.text = DialogueManager.currentSegment.content;
             dialoguePanel.SetActive(true);

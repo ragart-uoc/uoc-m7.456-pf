@@ -1,7 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using PF.Entities;
-using UnityEngine.Tilemaps;
 
 namespace PF.Managers
 {
@@ -39,6 +39,7 @@ namespace PF.Managers
         /// </summary>
         private void Start()
         {
+            // Load game data or create new game data
             var playerProgressJson = PlayerPrefs.GetString("PlayerProgress");
             _playerProgress = playerProgressJson == ""
                 ? new PlayerProgress()
@@ -68,14 +69,16 @@ namespace PF.Managers
         {
             switch (scene.name)
             {
+                case "WordSelection":
+                    DialogueManager.wordsEquipped = new string[];
+                    break;
                 case "Game":
                     _player = GameObject.FindWithTag("Player");
-                    // Get all tilemaps with tag "EditorOnly"
-                    var tilemaps = GameObject.FindGameObjectsWithTag("EditorOnly");
-                    // Disable all tilemaps with tag "EditorOnly"
-                    foreach (var tilemap in tilemaps)
+                    // Disable the renderer of all GameObjects with tag "Collisions"
+                    var collisionObjects = GameObject.FindGameObjectsWithTag("Collisions");
+                    foreach (var collisionObject in collisionObjects)
                     {
-                        tilemap.GetComponent<TilemapRenderer>().enabled = false;
+                        collisionObject.GetComponent<Renderer>().enabled = false;
                     }
                     break;
             }
