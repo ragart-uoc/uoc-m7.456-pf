@@ -2984,8 +2984,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 811736613}
-        m_TargetAssemblyTypeName: PF.Managers.PlayerPrefsManager, Assembly-CSharp
+      - m_Target: {fileID: 811736615}
+        m_TargetAssemblyTypeName: PF.Managers.OptionsManager, Assembly-CSharp
         m_MethodName: ChangeTextSpeed
         m_Mode: 1
         m_Arguments:
@@ -3405,29 +3405,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 811736614}
-  - component: {fileID: 811736613}
+  - component: {fileID: 811736615}
   m_Layer: 0
-  m_Name: PlayerPrefsManager
+  m_Name: OptionsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &811736613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 811736612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f94b144a2d89b44ba341708b4adf69c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeSlider: {fileID: 2137856192}
-  textSpeedSlider: {fileID: 626493091}
-  movementSpeedSlider: {fileID: 1899411501}
 --- !u!4 &811736614
 Transform:
   m_ObjectHideFlags: 0
@@ -3443,6 +3428,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &811736615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811736612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e20c1024be295d048912962f46828fe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 2137856192}
+  textSpeedSlider: {fileID: 626493091}
+  movementSpeedSlider: {fileID: 1899411501}
 --- !u!1 &847407510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4990,8 +4990,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 811736613}
-        m_TargetAssemblyTypeName: PF.Managers.PlayerPrefsManager, Assembly-CSharp
+      - m_Target: {fileID: 811736615}
+        m_TargetAssemblyTypeName: PF.Managers.OptionsManager, Assembly-CSharp
         m_MethodName: ChangeMovementSpeed
         m_Mode: 1
         m_Arguments:
@@ -5593,8 +5593,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 811736613}
-        m_TargetAssemblyTypeName: PF.Managers.PlayerPrefsManager, Assembly-CSharp
+      - m_Target: {fileID: 811736615}
+        m_TargetAssemblyTypeName: PF.Managers.OptionsManager, Assembly-CSharp
         m_MethodName: ChangeVolume
         m_Mode: 1
         m_Arguments:

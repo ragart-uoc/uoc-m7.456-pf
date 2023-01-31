@@ -9,7 +9,9 @@ namespace PF.Entities
     [System.Serializable]
     public class PlayerProgress
     {
-        public bool tutorialCompleted;
+        public bool tutorial1Completed;
+        public bool tutorial2Completed;
+        public bool tutorial3Completed;
         public bool death1Seen;
         public bool death2Seen;
         public bool death3Seen;
@@ -19,6 +21,24 @@ namespace PF.Entities
         public bool death7Seen;
         public bool death8Seen;
         public List<string> wordsLearned;
+        public List<string> wordsEquipped;
+        
+        public PlayerProgress()
+        {
+            tutorial1Completed = false;
+            tutorial2Completed = false;
+            tutorial3Completed = false;
+            death1Seen = false;
+            death2Seen = false;
+            death3Seen = false;
+            death4Seen = false;
+            death5Seen = false;
+            death6Seen = false;
+            death7Seen = false;
+            death8Seen = false;
+            wordsLearned = new List<string>();
+            wordsEquipped = new List<string>();
+        }
 
         public string ToJson()
         {

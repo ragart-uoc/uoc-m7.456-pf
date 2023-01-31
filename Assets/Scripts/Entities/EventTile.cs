@@ -5,7 +5,7 @@ namespace PF.Entities
 {
     public class EventTile : MonoBehaviour
     {
-        public EventManager eventManager;
+        public GameManager gameManager;
         
         private void OnTriggerEnter2D(Collider2D col)
         {
@@ -113,27 +113,23 @@ namespace PF.Entities
                 case "B9Dialogue":
                     StartDialogue(15);
                     break;
-                case "TEST":
-                    StartDialogue(8);
-                    ToggleGate("1A");
-                    break;
             }
 
         }
 
         private void StartDialogue(int dialogueSegmentId)
         {
-            eventManager.StartDialogue(dialogueSegmentId);
+            gameManager.StartDialogue(dialogueSegmentId);
         }
 
         private void SwitchBackgroundMusic(string musicName)
         {
-            eventManager.SwitchBackgroundMusic(musicName);
+            gameManager.SwitchBackgroundMusic(musicName);
         }
 
         private void ToggleGate(string gateNumber)
         {
-            eventManager.ToggleGate(gateNumber);
+            gameManager.ToggleGate(gateNumber);
         }
     }
 }

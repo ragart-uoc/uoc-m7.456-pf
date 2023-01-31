@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using PF.Entities;
 
@@ -22,13 +25,13 @@ namespace PF.Managers
         public static string[] wordsToLearn;
         
         /// <value>Property <c>segments</c> contains the dialogue segments.</value>
-        public static Dictionary<int, DialogueSegment> segments;
+        public static readonly Dictionary<int, DialogueSegment> Segments;
         
         /// <value>Property <c>currentSegment</c> represents the current dialogue segment.</value>
         public static DialogueSegment currentSegment;
 
         /// <summary>
-        /// Method <c>Awake</c> is called when the script instance is being loaded.
+        /// Method <c>DialogueManager</c> is the constructor of the class.
         /// </summary>
         static DialogueManager()
         {
@@ -36,8 +39,17 @@ namespace PF.Managers
             ImportWords();
             
             // Load dialogue segments
-            segments = new Dictionary<int, DialogueSegment>();
+            Segments = new Dictionary<int, DialogueSegment>();
             ImportDialogueSegments();
+            
+            // Initialize words learned
+            wordsLearned = Array.Empty<string>();
+            
+            // Initialize words equipped
+            wordsEquipped = Array.Empty<string>();
+            
+            // Initialize words to learn
+            wordsToLearn = Array.Empty<string>();
         }
         
         /// <summary>
@@ -61,8 +73,45 @@ namespace PF.Managers
                 .dialogueSegments;
             foreach (var dialogueSegment in dialogueSegments)
             {
-                segments.Add(dialogueSegment.id, dialogueSegment);
+                Segments.Add(dialogueSegment.id, dialogueSegment);
             }
         }
+        
+        /// <summary>
+        /// Method <c>SetCurrentSegment</c> sets the current dialogue segment.
+        /// </summary>
+        public static void SetCurrentSegment(int id)
+        {
+            currentSegment = Segments[id];
+        }
+
+        /// <summary>
+        /// Method <c>ProcessText</c> processes the text in search of words.
+        /// </summary>
+        public static string ProcessText(int id)
+        {
+            var processedText = currentSegment.content;
+            var wordsRegex = new Regex(@"\w+");
+            foreach (var textWord in wordsRegex.Matches(processedText).Select(m => m.Value))
+            {
+                var word = textWord.ToLower();
+                if (!words.Contains(word) || wordsLearned.Contains(word)) continue;
+                var newText = "<color=red><link=\"" + word + "\">" + textWord + "</link></color>";
+                processedText = processedText.Replace(textWord, newText);
+
+            }
+            return processedText;
+        }
+        
+        /// <summary>
+        /// Method <c>RefreshWords</c> refreshes the lists of words.
+        /// </summary>
+        public static void RefreshWords(List<string> wordsLearnedList, List<string> wordsEquippedList)
+        {
+            wordsLearned = wordsLearnedList.ToArray();
+            wordsEquipped = wordsEquippedList.ToArray();
+            wordsToLearn = words.Except(wordsLearned).ToArray();
+        }
+        
     }
 }
