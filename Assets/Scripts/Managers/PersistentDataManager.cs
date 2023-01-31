@@ -4,6 +4,9 @@ using PF.Entities;
 
 namespace PF.Managers
 {
+    /// <summary>
+    /// Class <c>PersistentDataManager</c> contains the methods and properties needed for the management of persistent data.
+    /// </summary>
     public class PersistentDataManager : MonoBehaviour
     {
         /// <value>Property <c>_instance</c> represents the instance of the PersistentDataManager.</value>

@@ -4,6 +4,9 @@ using TMPro;
 
 namespace PF.Managers
 {
+    /// <summary>
+    /// Class <c>WordSelectionManager</c> contains the methods and properties needed for the word selection.
+    /// </summary>
     public class WordSelectionManager : MonoBehaviour
     {
         /// <value>Property <c>_instance</c> represents the instance of the WordSelectionManager.</value>

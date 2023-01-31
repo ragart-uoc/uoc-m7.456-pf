@@ -6,6 +6,7 @@
         "nextSegment": 2,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -15,6 +16,7 @@
         "nextSegment": 3,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -24,6 +26,7 @@
         "nextSegment": 4,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -33,6 +36,7 @@
         "nextSegment": 5,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -42,6 +46,7 @@
         "nextSegment": 6,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -51,6 +56,7 @@
         "nextSegment": 7,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -60,16 +66,23 @@
         "nextSegment": null,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
         "id": 8,
         "speaker": "Character",
-        "content": "Where am I...?",
+        "content": "Where am I...? Death Happiness Love Life Serendipity Myself Yourself",
         "nextSegment": 9,
         "bridgeOpen": null,
         "ending": null,
-        "affectingWords": []
+        "interactable": true,
+        "affectingWords": [
+            {
+                "word": "serendipity",
+                "nextSegment": 8
+            }
+        ]
     },
     {
         "id": 9,
@@ -78,6 +91,7 @@
         "nextSegment": 10,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -87,6 +101,7 @@
         "nextSegment": 11,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -96,6 +111,7 @@
         "nextSegment": 12,
         "bridgeOpen": 1,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -105,6 +121,7 @@
         "nextSegment": null,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -114,6 +131,7 @@
         "nextSegment": null,
         "bridgeOpen": 1,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -123,6 +141,7 @@
         "nextSegment": null,
         "bridgeOpen": 9,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -132,6 +151,7 @@
         "nextSegment": 16,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -141,6 +161,7 @@
         "nextSegment": 17,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -150,6 +171,7 @@
         "nextSegment": 18,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -159,6 +181,7 @@
         "nextSegment": 19,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -168,6 +191,7 @@
         "nextSegment": 20,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -177,6 +201,7 @@
         "nextSegment": 21,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -186,6 +211,7 @@
         "nextSegment": 22,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -195,6 +221,7 @@
         "nextSegment": 23,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -204,6 +231,7 @@
         "nextSegment": 24,
         "bridgeOpen": null,
         "ending": null,
+        "interactable": false,
         "affectingWords": []
     },
     {
@@ -213,6 +241,57 @@
         "nextSegment": null,
         "bridgeOpen": null,
         "ending": 9,
+        "interactable": false,
+        "affectingWords": []
+    },
+    {
+        "id": 25,
+        "speaker": "Friend",
+        "content": "It's pretty clear that you're not interested in what I have to say. You won't stop interrupting me with a bunch of nonsense. This friendship is not going anywhere. Goodbye.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 4,
+        "interactable": false,
+        "affectingWords": []
+    },
+    {
+        "id": 26,
+        "speaker": "Character",
+        "content": "Yes?",
+        "nextSegment": 27,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "affectingWords": []
+    },
+    {
+        "id": 27,
+        "speaker": "Character",
+        "content": "She's dead...? And you don't know how?",
+        "nextSegment": 28,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "affectingWords": []
+    },
+    {
+        "id": 28,
+        "speaker": "Character",
+        "content": "She's dead...? And you don't know how?",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "affectingWords": []
+    },
+    {
+        "id": 29,
+        "speaker": "Friend",
+        "content": "What...?",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
         "affectingWords": []
     }
 ]

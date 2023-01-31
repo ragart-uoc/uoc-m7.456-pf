@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 using TMPro;
 using PF.Controllers;
 
@@ -84,8 +85,18 @@ namespace PF.Managers
             _doorOpen = Resources.Load<AudioClip>("Sounds/door");
         }
         
+        /// <summary>
+        /// Method <c>Start</c> is called on the frame when a script is enabled just before any of the Update methods are called the first time.
+        /// </summary>
         private void Start()
         {
+            // DEBUG
+            _persistentDataManager.equippedWords.Add("death");
+            _persistentDataManager.equippedWords.Add("life");
+            _persistentDataManager.equippedWords.Add("serendipity");
+            _persistentDataManager.equippedWords.Add("myself");
+            DialogueManager.RefreshWords(_persistentDataManager.learnedWords, _persistentDataManager.equippedWords);
+            
             // Disable the renderer of all GameObjects with tag "Collisions"
             var collisionObjects = GameObject.FindGameObjectsWithTag("Collisions");
             foreach (var collisionObject in collisionObjects)
@@ -100,10 +111,7 @@ namespace PF.Managers
             }
             foreach (var word in _persistentDataManager.equippedWords)
             {
-                var wordObject = Instantiate(wordPrefab, wordList.transform);
-                var tmpComponent = wordObject.GetComponentInChildren<TextMeshProUGUI>();
-                tmpComponent.text = word;
-                tmpComponent.color = new Color(0, 0, 0, 0.7f);
+                AddEquippedWordToUI(word);
             }
 
             // If all deaths are seen, load final dialogue
@@ -137,25 +145,28 @@ namespace PF.Managers
                 if (Input.anyKeyDown && !(Input.GetMouseButtonDown(0)
                                           || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)))
                 {
-                    if (DialogueManager.currentSegment.bridgeOpen > 0)
+                    if (!_replacingWords)
                     {
-                        ToggleBridge(DialogueManager.currentSegment.bridgeOpen);
-                    }
+                        if (DialogueManager.currentSegment.bridgeOpen > 0)
+                        {
+                            ToggleBridge(DialogueManager.currentSegment.bridgeOpen);
+                        }
 
-                    switch (DialogueManager.currentSegment)
-                    {
-                        case { ending: > 0 }:
-                            break;
-                        case { nextSegment: > 0 }:
-                            DialogueManager.SetCurrentSegment(DialogueManager.currentSegment.nextSegment);
-                            _messageTitleText.text = DialogueManager.currentSegment.speaker;
-                            _messageText.text =
-                                DialogueManager.ProcessText(DialogueManager.currentSegment.nextSegment);
-                            break;
-                        default:
-                            dialoguePanel.SetActive(false);
-                            ResumeMovement();
-                            break;
+                        switch (DialogueManager.currentSegment)
+                        {
+                            case { ending: > 0 }:
+                                break;
+                            case { nextSegment: > 0 }:
+                                DialogueManager.SetCurrentSegment(DialogueManager.currentSegment.nextSegment);
+                                _messageTitleText.text = DialogueManager.currentSegment.speaker;
+                                _messageText.text =
+                                    DialogueManager.ProcessText(DialogueManager.currentSegment.nextSegment);
+                                break;
+                            default:
+                                dialoguePanel.SetActive(false);
+                                ResumeMovement();
+                                break;
+                        }
                     }
                 }
             }
@@ -230,26 +241,79 @@ namespace PF.Managers
             _playerInput.enabled = true;
         }
         
-        private void LearnWord(string word)
+        public void EquipWord(string word)
         {
-            /*
-            if (_playerProgress.wordsLearned.Contains(word))
+            if (_persistentDataManager.equippedWords.Contains(word))
                 return;
-            if (_playerProgress.wordsLearned.Count < 4)
+            if (_persistentDataManager.equippedWords.Count < 4)
             {
-                _playerProgress.wordsLearned.Add(word);
+                SaveEquippedWord(word);
             }
             else
             {
                 ReplaceEquippedWord(word);
             }
-            */
+        }
+
+        private void SaveEquippedWord(string word)
+        {
+            _persistentDataManager.equippedWords.Add(word);
+            _persistentDataManager.SavePlayerProgress();
+            DialogueManager.RefreshWords(_persistentDataManager.learnedWords, _persistentDataManager.equippedWords);
+            AddEquippedWordToUI(word);
         }
         
         private void ReplaceEquippedWord(string word)
         {
             _replacingWords = true;
-            //_messageText.text = "You can't carry any more words, please drop one first.";
+            _replacementWord = word;
+            _messageText.text = "You can't carry any more words, please drop one first.";
+            if (DialogueManager.currentSegment.interactable) return;
+            foreach (var child in wordList.GetComponentsInChildren<TextMeshProUGUI>())
+            {
+                child.color = new Color(0, 0, 0, 1f);
+            }
+        }
+        
+        private void RemoveEquippedWord(string word)
+        {
+            _persistentDataManager.equippedWords.Remove(word);
+            _persistentDataManager.SavePlayerProgress();
+            DialogueManager.RefreshWords(_persistentDataManager.learnedWords, _persistentDataManager.equippedWords);
+            Destroy(GameObject.Find("Word-" + word));
+            _messageText.text = DialogueManager.ProcessText(DialogueManager.currentSegment.id);
+        }
+        
+        private void UseOrReplaceWord(string word)
+        {
+            if (_replacingWords)
+            {
+                RemoveEquippedWord(word);
+                SaveEquippedWord(_replacementWord);
+                _replacingWords = false;
+                _messageText.text = DialogueManager.ProcessText(DialogueManager.currentSegment.id);
+                if (DialogueManager.currentSegment.interactable) return;
+                foreach (var child in wordList.GetComponentsInChildren<TextMeshProUGUI>())
+                {
+                    child.color = new Color(0, 0, 0, 0.2f);
+                }
+            }
+            else
+            {
+                
+            }
+        }
+        
+        private void AddEquippedWordToUI(string word)
+        {
+            var wordObject = Instantiate(wordPrefab, wordList.transform);
+            wordObject.name = "Word-" + word;
+            var tmpComponent = wordObject.GetComponentInChildren<TextMeshProUGUI>();
+            tmpComponent.text = word;
+            tmpComponent.color = (!DialogueManager.currentSegment.interactable)
+                ? new Color(0, 0, 0, 0.2f)
+                : new Color(0, 0, 0, 1f);
+            wordObject.GetComponent<Button>().onClick.AddListener(() => UseOrReplaceWord(word));
         }
     }
 }

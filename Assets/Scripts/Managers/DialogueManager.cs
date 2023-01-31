@@ -95,7 +95,7 @@ namespace PF.Managers
             foreach (var textWord in wordsRegex.Matches(processedText).Select(m => m.Value))
             {
                 var word = textWord.ToLower();
-                if (!words.Contains(word) || wordsLearned.Contains(word)) continue;
+                if (!words.Contains(word) || wordsLearned.Contains(word) || wordsEquipped.Contains(word)) continue;
                 var newText = "<color=red><link=\"" + word + "\">" + textWord + "</link></color>";
                 processedText = processedText.Replace(textWord, newText);
 

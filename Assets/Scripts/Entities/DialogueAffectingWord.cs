@@ -4,6 +4,6 @@ namespace PF.Entities
     public class DialogueAffectingWord
     {
         public string word;
-        public string nextSegment;
+        public int nextSegment;
     }
 }
