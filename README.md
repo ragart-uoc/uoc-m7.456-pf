@@ -116,6 +116,7 @@ En el momento de la publicación de la propuesta, no fue posible llevar a cabo l
 - Extraer todas las cadenas de texto a un fichero de localización. Actualmente, las cadenas relativas a la UI están forzadas en el código y las relativas al contenido argumental están en un JSON con información adicional.
 - Añadir unas sombras NPC que persigan al personaje por los puentes entre las diferentes escenas. Si el personaje es atrapado por ellas, aparece el mensaje "Memento Mori" y debe reiniciar el bucle desde la escena inicial.
 - Hacer que el texto se escriba progresivamente en los cuadros de diálogo en vez de todo a la vez, implementando la configuración relativa a la velocidad de los textos en pantalla.
+- Utilizar el componente Timeline para la secuencia introductoria.
 
 ## Créditos
 
@@ -127,15 +128,19 @@ En el momento de la publicación de la propuesta, no fue posible llevar a cabo l
 
 ### Imágenes y animaciones
 
-- "city game *tiles*et" - Withering Systems - https://withering-systems.itch.io/city-game-*tiles*et
+- "city game tileset" - Withering Systems - https://withering-systems.itch.io/city-game-tileset
+- "Isometric pixel room" - hooded crow - https://opengameart.org/content/isometric-pixel-room
 
 ### Sonidos
+- "Reverberant door slammin" - Pixabay - https://pixabay.com/es/sound-effects/reverberant-door-slamming-80900/
+- "Phone ringing" - Pixabay - https://pixabay.com/es/sound-effects/phone-ringing-7006/
 
 ### Música
 
 - "Dark Fallout" - remaxim - https://opengameart.org/content/dark-fallout
 - "Dark Blue" - OveMelaa - https://opengameart.org/content/ove-melaa-dark-blue-orchestral-tune
 - "Mist Forest" - Janne Hanhisuanto [Radakan] - https://opengameart.org/content/radakan-mist-forest
+- "Sadness" - Joseph Gilbert / Kistol - https://opengameart.org/content/sadness
 
 ## Referencias
 
