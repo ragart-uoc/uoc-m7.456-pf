@@ -247,7 +247,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2553,9 +2553,16 @@ MonoBehaviour:
 
     "city game tileset", Withering Systems
 
+    "Isometric
+    pixel room", hooded crow
 
-    <#FF220088><allcaps>Sound
-    effects</allcaps></color>
+
+    <#FF220088><allcaps>Sound effects</allcaps></color>
+
+    "Reverberant
+    door slammin", Pixabay
+
+    "Phone ringing", Pixabay
 
 
     <#FF220088><allcaps>Music</allcaps></color>
@@ -2563,11 +2570,12 @@ MonoBehaviour:
     "Dark
     Fallout", remaxim
 
+    "Dark Blue", OveMelaa
 
-    <#FF220088><allcaps>Components and scripts</allcaps></color>
+    "Mist Forest", Janne Hanhisuanto
+    [Radakan]
 
-    "Tilemap
-    events", NTWalkers'
+    "Sadness", Joseph Gilbert / Kistol'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9cfd5dd6110dacd4dbc4990365ab3f75, type: 2}
   m_sharedMaterial: {fileID: -3808848578001791464, guid: 9cfd5dd6110dacd4dbc4990365ab3f75, type: 2}
@@ -2594,7 +2602,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
+  m_fontSize: 28
   m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 1
