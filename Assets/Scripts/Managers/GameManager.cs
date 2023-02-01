@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -49,6 +50,9 @@ namespace PF.Managers
 
         /// <value>Property <c>_messageText</c> represents the UI element containing the message text.</value>
         private TextMeshProUGUI _messageText;
+        
+        /// <value>Property <c>tutorialText</c> represents the UI element containing the tutorials.</value>
+        public TextMeshProUGUI tutorialText;
 
         /// <value>Property <c>player</c> represents the gameobject for the player.</value>
         public GameObject player;
@@ -89,6 +93,9 @@ namespace PF.Managers
             _playerInput = player.GetComponent<PlayerInput>();
             _audioSource = GetComponent<AudioSource>();
             _doorOpen = Resources.Load<AudioClip>("Sounds/door");
+            
+            // Hide tutorials
+            tutorialText.color = new Color(1, 1, 1, 0);
         }
 
         /// <summary>
@@ -132,6 +139,8 @@ namespace PF.Managers
             // In any other case, load the initial dialogue
             else
             {
+                if (!_persistentDataManager.playerProgress.tutorial1Completed)
+                    StartCoroutine(ShowTutorials(1));
                 StartDialogue(8);
                 ToggleGate("1A");
             }
@@ -221,10 +230,14 @@ namespace PF.Managers
                     break;
                 case { nextSegment: > 0 }:
                     LoadDialogue(DialogueManager.currentSegment.nextSegment, false);
+                    if (!_persistentDataManager.playerProgress.tutorial2Completed)
+                        StartCoroutine(ShowTutorials(2));
                     break;
                 default:
                     dialoguePanel.SetActive(false);
                     ResumeMovement();
+                    if (!_persistentDataManager.playerProgress.tutorial3Completed)
+                        StartCoroutine(ShowTutorials(3));
                     break;
             }
         }
@@ -378,6 +391,41 @@ namespace PF.Managers
                     ? new Color(0, 0, 0, 1f)
                     : new Color(0, 0, 0, 0.2f);
             }
+        }
+        
+        /// <summary>
+        /// Method <c>ShowTutorials</c> shows the tutorial text.
+        /// </summary>
+        private IEnumerator ShowTutorials(int tutorialId)
+        {
+            switch (tutorialId)
+            {
+                case 1:
+                    _persistentDataManager.playerProgress.tutorial1Completed = true;
+                    break;
+                case 2:
+                    _persistentDataManager.playerProgress.tutorial2Completed = true;
+                    break;
+                case 3:
+                    _persistentDataManager.playerProgress.tutorial3Completed = true;
+                    break;
+            }
+            
+            tutorialText.text = tutorialId switch
+            {
+                1 => "Press any key to advance the dialogue.",
+                2 => "Use your mouse to pick up and use highlighted words.",
+                3 => "You can use the WASD keys to move around.",
+                _ => tutorialText.text
+            };
+            
+            tutorialText.color = new Color(0, 0, 0, 0);
+            tutorialText.gameObject.SetActive(true);
+            StartCoroutine(Fade.FadeColorAlpha(tutorialText, 1, 3));
+            yield return new WaitForSeconds(3);
+            StartCoroutine(Fade.FadeColorAlpha(tutorialText, 0, 3));
+            yield return new WaitForSeconds(3);
+            tutorialText.gameObject.SetActive(false);
         }
     }
 }
