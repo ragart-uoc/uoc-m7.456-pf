@@ -10,11 +10,11 @@ El objetivo de la práctica era desarrollar una experiencia completa en 2D de te
 
 ## Vídeo explicativo
 
-<span style="color: red;">[ EN PREPARACIÓN ]</span>
+[![Vídeo explicativo](https://img.youtube.com/vi/3hgdEflBogQ/maxresdefault.jpg)](https://youtu.be/3hgdEflBogQ)
 
 ## Versión jugable
 
-[Logos by Ragart on itch.io](https://ragart.itch.io/logos) <span style="color: red;">[ EN PREPARACIÓN ]</span>
+[Logos by Ragart on itch.io](https://ragart.itch.io/logos)
 
 ## Repositorio en GitLab
 
@@ -107,6 +107,7 @@ Finalmente, también se ha incorporado un sistema de guardado y cargado que perm
 En el momento de la publicación de la propuesta, se tiene conocimiento de los problemas siguientes:
 
 - Los `tiles` de los puentes y las escenas se superponen en algunas ocasiones, haciendo que el personaje "salte" cuando pasa entre ellos.
+- La versión de WebGL da algunos problemas con el uso del ratón. A veces no es posible encontrar el cursor.
 
 ## Por hacer
 
@@ -162,6 +163,8 @@ En el momento de la publicación de la propuesta, no fue posible llevar a cabo l
 ### TextMeshPro
 
 - "Rich Text" - Unity Manual - https://docs.unity3d.com/Packages/com.unity.textmeshpro@4.0/manual/RichText.html
+- "Clickable link within a text" - Necronomicron [Unity Forums] - https://forum.unity.com/threads/clickable-link-within-a-text.910226/
+- "[Unity3D] Manage links with TextMeshPro" - Nicolas Form [Feel out the Form] - https://www.feelouttheform.net/unity3d-links-textmeshpro/
 
 ### Guardado, cargado, PlayerPrefs y serialización
 
