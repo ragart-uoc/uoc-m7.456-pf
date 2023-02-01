@@ -72,17 +72,12 @@
     {
         "id": 8,
         "speaker": "Character",
-        "content": "Where am I...? Death Happiness Love Life Serendipity Myself Yourself",
+        "content": "Where am I...?",
         "nextSegment": 9,
         "bridgeOpen": null,
         "ending": null,
-        "interactable": true,
-        "usableWords": [
-            {
-                "word": "serendipity",
-                "nextSegment": 8
-            }
-        ]
+        "interactable": false,
+        "usableWords": []
     },
     {
         "id": 9,
@@ -289,6 +284,795 @@
         "speaker": "Friend",
         "content": "What...?",
         "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 30,
+        "speaker": "Character",
+        "content": "Yes?",
+        "nextSegment": 31,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 31,
+        "speaker": "Character",
+        "content": "Dead, yes. Suicide. I know... Does it matter? I just know.",
+        "nextSegment": 32,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 32,
+        "speaker": "Character",
+        "content": "Let's try again.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 1,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 33,
+        "speaker": "Character",
+        "content": "Yes?",
+        "nextSegment": 34,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 34,
+        "speaker": "Character",
+        "content": "What do you mean, an accident? How? When?",
+        "nextSegment": 35,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 35,
+        "speaker": "Character",
+        "content": "Not the right path. I'm sorry, my friend..",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 2,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 36,
+        "speaker": "Character",
+        "content": "Yes?",
+        "nextSegment": 37,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 37,
+        "speaker": "Character",
+        "content": "Dead? How? She OD'd?",
+        "nextSegment": 38,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 38,
+        "speaker": "Character",
+        "content": "This is not the way. She needs her family.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 3,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 39,
+        "speaker": "Character",
+        "content": "Yes?",
+        "nextSegment": 40,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 40,
+        "speaker": "Character",
+        "content": "So, she feels alright? Better than ever? I'm glad. I'm happy for her.",
+        "nextSegment": 41,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 41,
+        "speaker": "Character",
+        "content": "I think this is it. She'll die when she's old, cozy in her bed. Not a minute before.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 5,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 42,
+        "speaker": "Character",
+        "content": "Yes?",
+        "nextSegment": 43,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 43,
+        "speaker": "Character",
+        "content": "Oh, dear. She's dead? I didn't know she was so ill...",
+        "nextSegment": 44,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 44,
+        "speaker": "Character",
+        "content": "That didn't go as I expected...",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 6,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 45,
+        "speaker": "Character",
+        "content": "Yes?",
+        "nextSegment": 46,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 46,
+        "speaker": "Character",
+        "content": "What!? She's dead? Her boyfriend killed her?",
+        "nextSegment": 47,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 47,
+        "speaker": "Character",
+        "content": "I'm sorry, my friend. I'm sorry.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 7,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 48,
+        "speaker": "Character",
+        "content": "Yes?",
+        "nextSegment": 49,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 49,
+        "speaker": "Character",
+        "content": "What do you mean she drowned? How could that happen?",
+        "nextSegment": 50,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 50,
+        "speaker": "Character",
+        "content": "Crying by the river because of me. That's how she died...",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 51,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 51,
+        "speaker": "Friend",
+        "content": "What will you do for our friendship?",
+        "nextSegment": 52,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 52,
+        "speaker": "Friend",
+        "content": "Have you ever thought about that?",
+        "nextSegment": 53,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "fear",
+                "nextSegment": 55
+            }
+        ]
+    },
+    {
+        "id": 53,
+        "speaker": "Friend",
+        "content": "I think about it everyday.",
+        "nextSegment": 54,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 54,
+        "speaker": "Friend",
+        "content": "What are we without each other?",
+        "nextSegment": null,
+        "bridgeOpen": 2,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 55,
+        "speaker": "Friend",
+        "content": "Huh? What are you scared about? Losing our friendship?",
+        "nextSegment": 53,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "doubt",
+                "nextSegment": 56
+            }
+        ]
+    },
+    {
+        "id": 56,
+        "speaker": "Friend",
+        "content": "I won't ever hesitate about us. Don't be afraid.",
+        "nextSegment": null,
+        "bridgeOpen": 6,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 57,
+        "speaker": "Friend",
+        "content": "Do you remember how we used to play here when we were little children?",
+        "nextSegment": 58,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 58,
+        "speaker": "Friend",
+        "content": "I guess we are not children anymore. And everyone expects something else from us.",
+        "nextSegment": 59,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 59,
+        "speaker": "Friend",
+        "content": "But I don't think I'm ready to be what they want me to be.",
+        "nextSegment": 60,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "guilt",
+                "nextSegment": 61
+            }
+        ]
+    },
+    {
+        "id": 60,
+        "speaker": "Friend",
+        "content": "I fear that they won't accept me for who I am.",
+        "nextSegment": null,
+        "bridgeOpen": 3,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 61,
+        "speaker": "Friend",
+        "content": "Guilt? Why should I feel guilty?",
+        "nextSegment": 60,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "myself",
+                "nextSegment": 62
+            }
+        ]
+    },
+    {
+        "id": 62,
+        "speaker": "Friend",
+        "content": "Oh, no! Don't be! You're not like the others. You're like… me.",
+        "nextSegment": null,
+        "bridgeOpen": 7,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 63,
+        "speaker": "Friend",
+        "content": "Look at the sights from here. This is probably the highest place in the city.",
+        "nextSegment": 64,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 64,
+        "speaker": "Friend",
+        "content": "The fall from here… Phew. But also, so close…",
+        "nextSegment": 65,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 65,
+        "speaker": "Friend",
+        "content": "It will be so easy… Just a little step, and…",
+        "nextSegment": 66,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "happiness",
+                "nextSegment": 67
+            }
+        ]
+    },
+    {
+        "id": 66,
+        "speaker": "Friend",
+        "content": "I'm kidding. What would you do without me? You're my family.",
+        "nextSegment": null,
+        "bridgeOpen": 4,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 67,
+        "speaker": "Friend",
+        "content": "I won't call it happiness… It's… something else. Like liberation. Like being released from all the guilt of being.",
+        "nextSegment": 68,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 68,
+        "speaker": "Friend",
+        "content": "You know what? I'm going to stay here a little more…",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 6,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 69,
+        "speaker": "Friend",
+        "content": "I hate you! I don't… I…",
+        "nextSegment": 70,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 70,
+        "speaker": "Friend",
+        "content": "Sorry. I'm just… No, it doesn't matter. It's not important.",
+        "nextSegment": 71,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 71,
+        "speaker": "Friend",
+        "content": "You know what I like? Serendipity. That's a world like no other.",
+        "nextSegment": 72,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 72,
+        "speaker": "Friend",
+        "content": "I'm not drunk… I'm just… happy. Well, not really… I don't know. What is happening to me?",
+        "nextSegment": null,
+        "bridgeOpen": 5,
+        "ending": null,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "loneliness",
+                "nextSegment": 73
+            }
+        ]
+    },
+    {
+        "id": 73,
+        "speaker": "Friend",
+        "content": "You think I'm lonely? You think that's my biggest problem? What would you know? I have lots of people around me.",
+        "nextSegment": null,
+        "bridgeOpen": 5,
+        "ending": null,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "love",
+                "nextSegment": 74
+            },
+            {
+                "word": "family",
+                "nextSegment": 75
+            }
+        ]
+    },
+    {
+        "id": 74,
+        "speaker": "Friend",
+        "content": "No one loves me, that's what you mean? You don't care about my health, you don't care about my hobbies… No, you care about my sex life. How typical. I'm leaving.",
+        "nextSegment": null,
+        "bridgeOpen": 8,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 75,
+        "speaker": "Friend",
+        "content": "My family abandoned me. That's what you mean. I know. You don't have to tell me. I'm leaving.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 3,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 76,
+        "speaker": "Friend",
+        "content": "Don't follow me! I told you I need to be alone!",
+        "nextSegment": 77,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 77,
+        "speaker": "Friend",
+        "content": "Fuck love. Fuck feelings. They're just the opium to keep us addicted to our shitty lives.",
+        "nextSegment": 78,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 78,
+        "speaker": "Friend",
+        "content": "There nothing left for me. Not here, not anywhere.",
+        "nextSegment": 79,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "life",
+                "nextSegment": 80
+            }
+        ]
+    },
+    {
+        "id": 79,
+        "speaker": "Friend",
+        "content": "I promise you, I will kill myself if I don't escape this hellhole.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 1,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 80,
+        "speaker": "Friend",
+        "content": "Living? Why should I keep doing that? Do yourself a favor and leave life out of this.",
+        "nextSegment": 79,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "time",
+                "nextSegment": 81
+            }
+        ]
+    },
+    {
+        "id": 81,
+        "speaker": "Friend",
+        "content": "Time… I have all the time in the world. Maybe you're right. I don't have to waste my time anymore. I'm going to live my life.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 2,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 82,
+        "speaker": "Friend",
+        "content": "The leaves are falling early this year.",
+        "nextSegment": 83,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 83,
+        "speaker": "Friend",
+        "content": "Ah, it's so beautiful!",
+        "nextSegment": 84,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "yourself",
+                "nextSegment": 88
+            }
+        ]
+    },
+    {
+        "id": 84,
+        "speaker": "Friend",
+        "content": "This is my favorite place in the world. It's just me… and my loneliness.",
+        "nextSegment": 85,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "serendipity",
+                "nextSegment": 86
+            }
+        ]
+    },
+    {
+        "id": 85,
+        "speaker": "Friend",
+        "content": "I don't know why I invited you to come. This is mine. Maybe I just wanted to share it with you while I can…",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 1,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 86,
+        "speaker": "Friend",
+        "content": "Ha ha ha! Yes, I love that word. You remembered. That's what you do. You care about what's important.",
+        "nextSegment": 85,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "friendship",
+                "nextSegment": 87
+            }
+        ]
+    },
+    {
+        "id": 87,
+        "speaker": "Friend",
+        "content": "That's it. Our friendship. I'm really happy I invited you to come.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 5,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 88,
+        "speaker": "Friend",
+        "content": "Ha ha ha! Oi, are you trying to flirt with me? That's so NOT like you. I sincerely DOUBT you're interested in me.",
+        "nextSegment": 84,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 89,
+        "speaker": "Friend",
+        "content": "Do you hear that?",
+        "nextSegment": 90,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 90,
+        "speaker": "Friend",
+        "content": "That's the call of the sea. It's… mesmerizing.",
+        "nextSegment": 91,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 91,
+        "speaker": "Friend",
+        "content": "I hear the waves calling my name.",
+        "nextSegment": 92,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 92,
+        "speaker": "Friend",
+        "content": "It's almost time. I can't wait to meet you on the other side.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 1,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "death",
+                "nextSegment": 93
+            }
+        ]
+    },
+    {
+        "id": 93,
+        "speaker": "Friend",
+        "content": "It's not dying if you're already dead.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 1,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "health",
+                "nextSegment": 94
+            }
+        ]
+    },
+    {
+        "id": 94,
+        "speaker": "Friend",
+        "content": "I may not be dead, but I am not alive either. Life just doesn't like me. You know, I don't feel like it anymore. Go. Leave me.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 8,
+        "interactable": false,
+        "usableWords": []
+    },
+    {
+        "id": 95,
+        "speaker": "Friend",
+        "content": "This is it. The end of the line.",
+        "nextSegment": 96,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 96,
+        "speaker": "Friend",
+        "content": "I'm going to follow this road, no matter where it takes me.",
+        "nextSegment": 97,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 97,
+        "speaker": "Friend",
+        "content": "This city is a death trap.",
+        "nextSegment": 98,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": [
+            {
+                "word": "hate",
+                "nextSegment": 99
+            }
+        ]
+    },
+    {
+        "id": 98,
+        "speaker": "Friend",
+        "content": "My boyfriend and I are leaving today. You should leave too.",
+        "nextSegment": null,
+        "bridgeOpen": null,
+        "ending": 7,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 99,
+        "speaker": "Friend",
+        "content": "Hate? I't not hate. It's something worse. There's something about this place…",
+        "nextSegment": 100,
+        "bridgeOpen": null,
+        "ending": null,
+        "interactable": true,
+        "usableWords": []
+    },
+    {
+        "id": 100,
+        "speaker": "Friend",
+        "content": "It sucks you out of every inch of happiness. And it never has enough.",
+        "nextSegment": 98,
         "bridgeOpen": null,
         "ending": null,
         "interactable": false,

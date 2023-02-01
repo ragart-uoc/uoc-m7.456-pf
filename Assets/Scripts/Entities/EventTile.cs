@@ -29,6 +29,8 @@ namespace PF.Entities
                     Destroy(gameObject);
                     break;
                 case "B1Dialogue":
+                    gameManager.StartDialogue(51);
+                    Destroy(gameObject);
                     break;
                 case "B2Start":
                     gameManager.ToggleGate("2A");
@@ -40,6 +42,8 @@ namespace PF.Entities
                     Destroy(gameObject);
                     break;
                 case "B2Dialogue":
+                    gameManager.StartDialogue(57);
+                    Destroy(gameObject);
                     break;
                 case "B3Start":
                     gameManager.ToggleGate("3A");
@@ -51,6 +55,8 @@ namespace PF.Entities
                     Destroy(gameObject);
                     break;
                 case "B3Dialogue":
+                    gameManager.StartDialogue(63);
+                    Destroy(gameObject);
                     break;
                 case "B4Start":
                     gameManager.ToggleGate("4A");
@@ -62,6 +68,8 @@ namespace PF.Entities
                     Destroy(gameObject);
                     break;
                 case "B4Dialogue":
+                    gameManager.StartDialogue(69);
+                    Destroy(gameObject);
                     break;
                 case "B5Start":
                     gameManager.ToggleGate("5A");
@@ -73,6 +81,8 @@ namespace PF.Entities
                     Destroy(gameObject);
                     break;
                 case "B5Dialogue":
+                    gameManager.StartDialogue(76);
+                    Destroy(gameObject);
                     break;
                 case "B6Start":
                     gameManager.ToggleGate("6A");
@@ -84,6 +94,8 @@ namespace PF.Entities
                     Destroy(gameObject);
                     break;
                 case "B6Dialogue":
+                    gameManager.StartDialogue(82);
+                    Destroy(gameObject);
                     break;
                 case "B7Start":
                     gameManager.ToggleGate("7A");
@@ -95,6 +107,8 @@ namespace PF.Entities
                     Destroy(gameObject);
                     break;
                 case "B7Dialogue":
+                    gameManager.StartDialogue(89);
+                    Destroy(gameObject);
                     break;
                 case "B8Start":
                     gameManager.ToggleGate("8A");
@@ -106,6 +120,8 @@ namespace PF.Entities
                     Destroy(gameObject);
                     break;
                 case "B8Dialogue":
+                    gameManager.StartDialogue(95);
+                    Destroy(gameObject);
                     break;
                 case "B9Start":
                     gameManager.ToggleGate("9A");

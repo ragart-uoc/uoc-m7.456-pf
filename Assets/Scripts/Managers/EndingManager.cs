@@ -79,25 +79,25 @@ namespace PF.Managers
             switch (_persistentDataManager.endingReached)
             {
                 case 1:
-                    StartCoroutine(PlayDialogue(29, "What if...?"));
+                    StartCoroutine(PlayDialogue(30, "What if...?"));
                     break;
                 case 2:
-                    StartCoroutine(PlayDialogue(29, "Carpe Diem"));
+                    StartCoroutine(PlayDialogue(33, "Carpe Diem"));
                     break;
                 case 3:
-                    StartCoroutine(PlayDialogue(29, "My only friend, the end"));
+                    StartCoroutine(PlayDialogue(36, "My only friend, the end"));
                     break;
                 case 4:
                     StartCoroutine(PlayDialogue(26, "Perfect strangers"));
                     break;
                 case 5:
-                    StartCoroutine(PlayDialogue(29, "Til death do us part"));
+                    StartCoroutine(PlayDialogue(39, "Til death do us part"));
                     break;
                 case 6:
-                    StartCoroutine(PlayDialogue(29, "Avoid like the plague"));
+                    StartCoroutine(PlayDialogue(42, "Avoid like the plague"));
                     break;
                 case 7:
-                    StartCoroutine(PlayDialogue(29, "This needs to stop happening"));
+                    StartCoroutine(PlayDialogue(45, "This needs to stop happening"));
                     break;
                 case 8:
                     StartCoroutine(PlayDialogue(29, "Drowning in tears"));

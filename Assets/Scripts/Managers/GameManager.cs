@@ -128,13 +128,11 @@ namespace PF.Managers
             {
                 ToggleBridge(9);
                 StartDialogue(14);
-                ToggleGate("9A");
             }
             // If tutorials are completed, load the loop initial dialogue
             else if (_persistentDataManager.AllTutorialsCompleted())
             {
                 StartDialogue(13);
-                ToggleGate("1A");
             }
             // In any other case, load the initial dialogue
             else
@@ -142,7 +140,6 @@ namespace PF.Managers
                 if (!_persistentDataManager.playerProgress.tutorial1Completed)
                     StartCoroutine(ShowTutorials(1));
                 StartDialogue(8);
-                ToggleGate("1A");
             }
         }
 
@@ -220,6 +217,7 @@ namespace PF.Managers
             if (DialogueManager.currentSegment.bridgeOpen > 0)
             {
                 ToggleBridge(DialogueManager.currentSegment.bridgeOpen);
+                ToggleGate(DialogueManager.currentSegment.bridgeOpen.ToString() + "A");
             }
 
             switch (DialogueManager.currentSegment)
