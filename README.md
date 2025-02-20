@@ -1,6 +1,6 @@
 # Logos
 
-![Captura de pantalla de la página de título de Logos](https://folio-uploads-pro.s3.eu-west-1.amazonaws.com/wp-content/uploads/sites/8519/2023/01/29202129/pf-screenshot-1024x575.jpg)
+![Captura de pantalla de la página de título de Logos](README/pf-screenshot.png)
 
 "Logos" es el nombre de mi prototipo para la Práctica Final de la asignatura Programación de Videojuegos 2D del Máster Universitario en Diseño y Programación de Videojuegos de la UOC.
 
@@ -76,31 +76,31 @@ Además, para poder llevar a cabo la propuesta, se han utilizado varios de los c
   - Los `tiles` azules son de carácter temporal y se usan para definir las barreras entre las escenas, que desaparecer cuando se cumplen ciertas condiciones.
   - Los `tiles` verdes no son realmente `tiles`, sino objetos que disparan uno o varios eventos cuando el jugador entra en contacto con ellos.
 
-![Captura de pantalla de la vista de Grid de Unity durante el desarrollo de Logos](https://folio-uploads-pro.s3.eu-west-1.amazonaws.com/wp-content/uploads/sites/8519/2023/01/29203515/imagen_2023-01-29_213514095.png)
+![Captura de pantalla de la vista de Grid de Unity durante el desarrollo de Logos](README/pf-screenshot-grid.png)
 
 - Los `tiles` de las diferentes capas se han añadido mediante el uso de `palettes`.
 
-![Captura de pantalla del componente tilePalette de Unity](https://folio-uploads-pro.s3.eu-west-1.amazonaws.com/wp-content/uploads/sites/8519/2023/01/29210744/pf-screenshot-palettes.jpg)
+![Captura de pantalla del componente tilePalette de Unity](README/pf-screenshot-palettes.png)
 
 - Para optimizar la creación de las animaciones de los personajes, se han utilizado `sprite libraries` y `blend trees`.
 
-![Captura de pantalla de los elementos blendTree y spriteLibrary de Unity](https://folio-uploads-pro.s3.eu-west-1.amazonaws.com/wp-content/uploads/sites/8519/2023/01/29210624/pf-screenshot-spritelibraries-1024x575.png)
+![Captura de pantalla de los elementos blendTree y spriteLibrary de Unity](README/pf-screenshot-spritelibraries.png)
 
 - Para poder proporcionar una experiencia completa con el teclado, se ha utilizado el componente Navigation y se han configurado de manera programática las diferentes lógicas que rigen el flujo de desplazamiento del usuario por los menús.
 
-![Captura de pantalla del componente navigation de Unity](https://folio-uploads-pro.s3.eu-west-1.amazonaws.com/wp-content/uploads/sites/8519/2023/01/29211231/imagen_2023-01-29_221230497.png)
+![Captura de pantalla del componente navigation de Unity](README/pf-screenshot-navigation.png)
 
 - Para poder trabajar con palabras específicas dentro de los textos del juego, se han utilizado las etiquetas de texto enriquecido del componente TextMeshPro. En particular, la etiqueta `<link>` permite tanto la caracterización de palabras dentro del texto como la interactividad por parte del jugador.
 
-![Captura de pantalla de una versión preliminar de Logos en la que se muestra el uso del componente TextMeshPro](https://folio-uploads-pro.s3.eu-west-1.amazonaws.com/wp-content/uploads/sites/8519/2023/01/29211844/pf-screenshot-tmpro.jpg)
+![Captura de pantalla de una versión preliminar de Logos en la que se muestra el uso del componente TextMeshPro](README/pf-screenshot-tmpro.png)
 
 Además, para poder desplegar el complejo árbol de conversaciones que subyace a esta propuesta, se ha optado por crear varias entidades a nivel de código que reflejan las diferentes unidades que pueden extraerse del texto (segmentos, palabras, etc.) y que facilitan tanto la importación de texto desde un formato de intercambio como el desarrollo del flujo conversacional.
 
-![Captura de pantalla del fragmento de código de Logos que define un segmento textual](https://folio-uploads-pro.s3.eu-west-1.amazonaws.com/wp-content/uploads/sites/8519/2023/01/29213359/pf-screenshot-entites_code.png)
+![Captura de pantalla del fragmento de código de Logos que define un segmento textual](README/pf-screenshot-entites_code.png)
 
 Finalmente, también se ha incorporado un sistema de guardado y cargado que permite retomar el juego por donde se dejó. Para ello, se ha utilizado el almacén de `PlayerPrefs`, ya que el uso de almacenes de datos basados en ficheros dificulta la publicación en WebGL y se ha preferido ir por lo seguro en base al tiempo disponible.
 
-![Captura de pantalla del fragmento de código de Logos que permite cargar una partida](https://folio-uploads-pro.s3.eu-west-1.amazonaws.com/wp-content/uploads/sites/8519/2023/01/29212830/imagen_2023-01-29_222829010.png)
+![Captura de pantalla del fragmento de código de Logos que permite cargar una partida](README/pf-screenshot-loadsave_code.png)
 
 ## Problemas conocidos
 
